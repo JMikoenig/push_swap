@@ -68,6 +68,19 @@ void    swap_both(Node *a, Node *b)
     swap(b);
 }
 
+void printList(Node *head)
+{
+    Node *current = head;
+    printf("\nLinked List: ");
+
+    for (int i = 0; i < 4; i++)
+    {
+        printf("%d ", current->value);
+        current = current->next;
+    }
+    printf("\n\n");
+}
+
 Node    *createNode(int value)
 {
     Node *newNode = (Node *)malloc(sizeof(Node));
