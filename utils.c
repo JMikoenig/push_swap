@@ -43,7 +43,7 @@ void printStrList(char **list, int size) {
 int	ft_atoi(const char *str)
 {
 	int			pol;
-	int			res;
+	long		res;
 	const char	*p;
 
 	pol = 1;
@@ -56,10 +56,26 @@ int	ft_atoi(const char *str)
 		pol = -1;
 	if (*p == '-' || *p == '+')
 		p++;
+    if (!check_syntax(p))
+        return (0);
 	while (*p && *p >= '0' && *p <= '9')
 	{
 		res = res * 10 + (*p - '0');
 		p++;
 	}
+    if (!check_overflow(res * pol))
+        return (0);
 	return (res * pol);
+}
+
+int *arr_atoi(char **tokens, int size)
+{
+    int i;
+    int *nums;
+
+    i = 0;
+    nums = malloc(size * sizeof(int));
+    while (i < size)
+        nums[i] = ft_atoi(tokens[i]);
+    return (nums);
 }
