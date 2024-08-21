@@ -1,3 +1,4 @@
+
 #define STACK_A 'a'
 #define STACK_B 'b'
 
@@ -12,11 +13,12 @@ typedef struct node
 }				Node;
 
 // split.c
-// char    	**ft_split(char *str, char separator);
-// static char *get_word(char *str, char separator);
-// static int  count_words(char *str, char separator);
+// int	ft_split(char *str, char separator, char ***tokens);
+int str_separate(char *srcstr, char sep, char ***output);
 
 // utils.c
+void printStrList(char **list, int size);
+
 // void    print_command(char *str);
 
 // === OPERATIONS ===

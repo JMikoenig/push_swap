@@ -1,4 +1,7 @@
 #include "push_swap.h"
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
 
 void    print_command(char *str)
 {
@@ -24,4 +27,15 @@ Node* createNode(int value) {
     Node *node = (Node*) malloc(sizeof(Node));
     node->value = value;
     return node;
+}
+
+void printStrList(char **list, int size) {
+    if (size <= 0) {
+        printf("Invalid size: %d", size);
+        exit(1);
+    }
+    for(int i=0;i<size;i++) {
+        printf("%s ", list[i]);
+    }
+    printf("\n");
 }

@@ -1,112 +1,7 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   split.c                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/01 10:52:54 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/07/16 16:51:59 by jamanzan         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "push_swap.h"
 #include <stdlib.h>
-#include <unistd.h>
 #include <stdio.h>
 #include <string.h>
-
-static int	count_words(char *str, char separator)
-{
-	int	words;
-	int	inside_word;
-
-	words = 0;
-	while (*str)
-	{
-		inside_word = 0;
-		while (*str == separator)
-			str++;
-		while (*str != separator && *str)
-		{
-			if (!inside_word)
-			{
-				words++;
-				inside_word++;
-			}
-			str++;
-		}
-	}
-	return (words);
-}
-
-static char	*get_word(char *str, char separator)
-{
-	static int	c = 0;
-	char		*word;
-	int			i;
-	size_t		len;
-
-	i = 0;
-	len = 0;
-	while (str[c] == separator)
-		c++;
-	while ((str[c + len] != separator) && str[c + len])
-		len++;
-	word = malloc(len + 1 * sizeof(char));
-	if (!word)
-	{
-		free(word);
-		return (NULL);
-	}
-	while (len--)
-	{
-		word[i] = str[c];
-		i++;
-		c++;
-	}
-	word[i] = '\0';
-	return (word);
-}
-
-int	ft_split(char *str, char separator, char **tokens)
-{
-	int	i;
-	int	words;
-	int	count;
-
-	i = 0;
-	words = count_words(str, separator);
-	count = words;
-	if (!words)
-		exit(1);
-	tokens = malloc(words * sizeof(char *));
-	if (!tokens)
-	{
-		free(tokens);
-		return 0;
-	}
-	while (count-- >= 0)
-	{
-		if (!i)
-		{
-			tokens[i] = malloc(sizeof(char));
-			if (!tokens[i])
-			{
-				free(tokens[i]);
-				return 0;
-			}
-			tokens[i++][0] = '\0';
-			continue ;
-		}
-		char * tmp = get_word(str, separator);
-		tokens[i++] = tmp;
-	}
-	printf("adding: %s", tokens[0]);
-	exit(0);
-
-	return (words);
-}
 
 int str_separate(char *srcstr, char sep, char ***output)
 {
@@ -179,19 +74,21 @@ int str_separate(char *srcstr, char sep, char ***output)
 	 * a pointer to the character after each NULL in *currentpart, after
 	 * incrementing currentpart to move to the next char * slot.
 	 */
+    i = 0;
 	
-	for (i = 0; i < len; i++) /* < len: we never get to the last '\0', 
+	while (i < len) /* < len: we never get to the last '\0', 
 	                           * since strlen gives us the length of
 	                           * the string, not including the NULL */
 	{
 		if (srcstr[i] == '\0') {
-			while(srcstr[i+1] == '\0') {
+            while(srcstr[i+1] == '\0') {
                 i++;
                 numparts --;
             }
 			currentpart++;
 			*currentpart = &(srcstr[i+1]);
 		}
+        i++;
 	}
 	
 	/* 
@@ -202,3 +99,22 @@ int str_separate(char *srcstr, char sep, char ***output)
 	return numparts; 
 }
 
+
+
+int test1() {
+    char input[] = "1 3   2";
+
+    int expected[] = {1, 3, 2};
+    char** output = NULL;
+    int size = str_separate(input, ' ', &output);
+    if(size != 3) {
+        printf("excpected size: 3, actual size: %d\n", size);
+    }
+    printf("output list: ");
+    printStrList(output, size);
+
+}
+
+int main() {
+    test1();
+}

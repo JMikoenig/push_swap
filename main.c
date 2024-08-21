@@ -1,21 +1,31 @@
 #include "push_swap.h"
+#include <stdlib.h>
 #include <stdio.h>
 
 int main(int argc, char **argv) 
 {
+    int size;
+    char **tokens = NULL;
+    int *arrayToSort;
+
     if (argc == 1) {
         return 1;
     } else if (argc == 2) {
          if (!argv[1][0]) {
             return 1;
          } else {
-            printf("I'm splitting the string");
+            size = str_separate(argv[1], ' ', &tokens);
          }
     } else {
-        printf("I already have the array");
+        tokens = argv + 1;
+        size = argc - 1;
     }
+    printf("The tokens are:\n");
+    printStrList(tokens, size);
+    int *arr;
+    arr = convert(tokens, size);
+
     /*
-    int *arrayToSort;
     int status = validate_input(argc, argv);
     if (status) {
         // Imprimir error
