@@ -39,3 +39,27 @@ void printStrList(char **list, int size) {
     }
     printf("\n");
 }
+
+int	ft_atoi(const char *str)
+{
+	int			pol;
+	int			res;
+	const char	*p;
+
+	pol = 1;
+	res = 0;
+	p = str;
+	while (*p && (*p == '\n' || *p == '\t'
+			|| *p == '\v' || *p == '\f' || *p == '\r'))
+		p++;
+	if (*p == '-')
+		pol = -1;
+	if (*p == '-' || *p == '+')
+		p++;
+	while (*p && *p >= '0' && *p <= '9')
+	{
+		res = res * 10 + (*p - '0');
+		p++;
+	}
+	return (res * pol);
+}
