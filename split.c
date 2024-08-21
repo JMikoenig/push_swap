@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static int	count_words(char *str, char separator)
+int	count_words(char *str, char separator)
 {
 	int	words;
 	int	inside_word;
@@ -36,7 +36,7 @@ static int	count_words(char *str, char separator)
 	return (words);
 }
 
-static char	*get_word(char *str, char separator)
+char	*get_word(char *str, char separator)
 {
 	static int	c = 0;
 	char		*word;
@@ -49,7 +49,7 @@ static char	*get_word(char *str, char separator)
 		c++;
 	while ((str[c + len] != separator) && str[c + len])
 		len++;
-	word = malloc(len * sizeof(char) + 1);
+	word = malloc(len + 1 * sizeof(char));
 	if (!word)
 	{
 		free(word);
@@ -65,9 +65,8 @@ static char	*get_word(char *str, char separator)
 	return (word);
 }
 
-char	**ft_split(char *str, char separator)
+int	ft_split(char *str, char separator, char **parsed_argv)
 {
-	char	**str_arr;
 	int		i;
 	int		words;
 
@@ -75,27 +74,27 @@ char	**ft_split(char *str, char separator)
 	words = count_words(str, separator);
 	if (!words)
 		exit(1);
-	str_arr = malloc((words + 2) * sizeof(char *));
-	if (!str_arr)
+	parsed_argv = malloc((words + 2) * sizeof(char *));
+	if (!parsed_argv)
 	{
-		free(str_arr);
+		free(parsed_argv);
 		return (NULL);
 	}
 	while (words-- >= 0)
 	{
 		if (!i)
 		{
-			str_arr[i] = malloc(sizeof(char));
-			if (!str_arr[i])
+			parsed_argv[i] = malloc(sizeof(char));
+			if (!parsed_argv[i])
 			{
-				free(str_arr[i]);
+				free(parsed_argv[i]);
 				return (NULL);
 			}
-			str_arr[i++][0] = '\0';
+			parsed_argv[i++][0] = '\0';
 			continue ;
 		}
-		str_arr[i++] = get_word(str, separator);
+		parsed_argv[i++] = get_word(str, separator);
 	}
-	str_arr[i] = NULL;
-	return (str_arr);
+	parsed_argv[i] = NULL;
+	return (words);
 }
