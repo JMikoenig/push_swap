@@ -33,8 +33,8 @@ int	check_overflow(long n)
 
 int	has_repetitions(const int *arrayToSort, const int size)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (i < size - 1)
