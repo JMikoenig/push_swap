@@ -1,10 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   input_validation.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/22 18:41:43 by jamanzan          #+#    #+#             */
+/*   Updated: 2024/08/22 18:41:59 by jamanzan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 
-int enough_arguments(int argc, char** argv) {
+int	enough_arguments(int argc, char **argv)
+{
 	if (argc == 1)
-		return 0;
+		return (0);
 	if (argc == 2 && !argv[1][0])
-		return 0;
+		return (0);
 }
 
 int	has_duplicates(const int *arr, const int size)
