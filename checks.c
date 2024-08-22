@@ -1,6 +1,8 @@
 #include "push_swap.h"
+#include <stdlib.h>
+#include <unistd.h>
 
-int check_syntax(char *n)
+int check_syntax(const char *n)
 {
 	int len;
 

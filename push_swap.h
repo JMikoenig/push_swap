@@ -19,8 +19,13 @@ int str_separate(char *srcstr, char sep, char ***output);
 
 // utils.c
 void printStrList(char **list, int size);
+void printIntList(int *arr, int size);
+int *arr_atoi(char **tokens, int size);
 
-// void    print_command(char *str);
+// checks.c
+int check_overflow(long n);
+int check_syntax(const char *n);
+
 
 // === OPERATIONS ===
 

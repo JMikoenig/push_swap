@@ -83,7 +83,7 @@ int str_separate(char *srcstr, char sep, char ***output)
 		if (srcstr[i] == '\0') {
             while(srcstr[i+1] == '\0') {
                 i++;
-                numparts --;
+                numparts --
             }
 			currentpart++;
 			*currentpart = &(srcstr[i+1]);
@@ -101,8 +101,23 @@ int str_separate(char *srcstr, char sep, char ***output)
 
 
 
-int test1() {
-    char input[] = "1 3   2";
+int should_parse_a_normally_written_array_of_numbers() {
+    char input[] = "1 3 2";
+
+    int expected[] = {1, 3, 2};
+    char** output = NULL;
+    int size = str_separate(input, ' ', &output);
+    if(size != 3) {
+        printf("excpected size: 3, actual size: %d\n", size);
+    }
+    printf("output list: ");
+    printStrList(output, size);
+
+}
+
+
+int should_parse_a_array_of_numbers_when_the_separator_is_used_multiple_times_in_a_row() {
+    char input[] = "1 3     2";
 
     int expected[] = {1, 3, 2};
     char** output = NULL;
@@ -116,5 +131,6 @@ int test1() {
 }
 
 int main() {
-    test1();
+    should_parse_a_normally_written_array_of_numbers();
+	should_parse_a_array_of_numbers_when_the_separator_is_used_multiple_times_in_a_row();
 }

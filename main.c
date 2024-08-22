@@ -23,7 +23,9 @@ int main(int argc, char **argv)
     printf("The tokens are:\n");
     printStrList(tokens, size);
     int *arr;
-    arr = convert(tokens, size);
+    arr = arr_atoi(tokens, size);
+    printf("The final array is:\n");
+    printIntList(arr, size);
 
     /*
     int status = validate_input(argc, argv);
