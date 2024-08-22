@@ -2,14 +2,17 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int	main(int argc, char **argv) 
+int	main(int argc, char **argv)
 {
 	int		size;
-	int		*arrayToSort;
-	char	**tokens = NULL;
-	t_node	*stack_a = NULL;
-	t_node	*stack_b = NULL;
-	
+	int		*array_to_sort;
+	char	**tokens;
+	t_node	*stack_a;
+	t_node	*stack_b;
+
+	tokens = NULL;
+	stack_a = NULL;
+	stack_b = NULL;
 	if (argc == 1)
 	{
 		return (1);
@@ -28,15 +31,15 @@ int	main(int argc, char **argv)
 	}
 	printf("The tokens are:\n");
 	printStrList(tokens, size);
-	arrayToSort = arr_atoi(tokens, size);
+	array_to_sort = arr_atoi(tokens, size);
 	printf("The final array is:\n");
-	printIntList(arrayToSort, size);
-	if (has_repetitions(arrayToSort, size))
+	printIntList(array_to_sort, size);
+	if (has_repetitions(array_to_sort, size))
 	{
 		printf("Duplicates detected!\n");
 		return (2);
 	}
-	initialize(&stack_a, arrayToSort, size);
+	initialize(&stack_a, array_to_sort, size);
 	printf("The initialized stack A is:\n");
 	printList(stack_a, size);
 	push(&stack_a, &stack_b);
@@ -67,18 +70,18 @@ int	main(int argc, char **argv)
 	if (queremos parsear) {
 			char **tokens = NULL;
 			int size = split(argv[1], ' ', tokens);
-			convert(tokens, arrayToSort, size)
+			convert(tokens, array_to_sort, size)
 	} else {
-		convert(argv + 1. arrayToSort, argc - 1);
+		convert(argv + 1. array_to_sort, argc - 1);
 	}
-	int areThereDuplicates = checkDuplicates(arrayToSort);
+	int areThereDuplicates = checkDuplicates(array_to_sort);
 	if (areThereDuplicates) {
 				// Imprimir error
 		return 1;
 	}
 	t_node* stack_a;
 	t_node* stack_b;
-	initialize(stack_a, arrayToSort, size);
+	initialize(stack_a, array_to_sort, size);
 
 	*/
 
