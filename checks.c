@@ -30,37 +30,3 @@ int	check_overflow(long n)
 	}
 	return (1);
 }
-
-int	has_repetitions(const int *arrayToSort, const int size)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < size - 1)
-	{
-		j = i + 1;
-		while (j < size)
-		{
-			if (arrayToSort[i] == arrayToSort[j])
-			{
-				write(1, "Error\n", 6);
-				return (1);
-			}
-			j++;
-		}
-		i++;
-	}
-	return (0);
-}
-
-int	check_sorted(const int *arr, const int size)
-{
-	int	i;
-
-	i = 0;
-	while (i < size - 1)
-		if (arr[i] > arr[i + 1])
-			return (0);
-	return (1);
-}

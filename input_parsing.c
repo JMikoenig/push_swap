@@ -16,99 +16,7 @@
 #include <stdio.h>
 #include <string.h>
 
-static int	count_words(char *str, char separator)
-{
-	int	words;
-	int	inside_word;
-
-	words = 0;
-	while (*str)
-	{
-		inside_word = 0;
-		while (*str == separator)
-			str++;
-		while (*str != separator && *str)
-		{
-			if (!inside_word)
-			{
-				words++;
-				inside_word++;
-			}
-			str++;
-		}
-	}
-	return (words);
-}
-
-static char	*get_word(char *str, char separator)
-{
-	static int	c = 0;
-	char		*word;
-	int			i;
-	size_t		len;
-
-	i = 0;
-	len = 0;
-	while (str[c] == separator)
-		c++;
-	while ((str[c + len] != separator) && str[c + len])
-		len++;
-	word = malloc(len + 1 * sizeof(char));
-	if (!word)
-	{
-		free(word);
-		return (NULL);
-	}
-	while (len--)
-	{
-		word[i] = str[c];
-		i++;
-		c++;
-	}
-	word[i] = '\0';
-	return (word);
-}
-
-int	ft_split(char *str, char separator, char **tokens)
-{
-	int		i;
-	int		words;
-	int		count;
-	char	*tmp;
-
-	i = 0;
-	words = count_words(str, separator);
-	count = words;
-	if (!words)
-		exit(1);
-	tokens = malloc(words * sizeof(char *));
-	if (!tokens)
-	{
-		free(tokens);
-		return (0);
-	}
-	while (count-- >= 0)
-	{
-		if (!i)
-		{
-			tokens[i] = malloc(sizeof(char));
-			if (!tokens[i])
-			{
-				free(tokens[i]);
-				return (0);
-			}
-			tokens[i++][0] = '\0';
-			continue ;
-		}
-		tmp = get_word(str, separator);
-		tokens[i++] = tmp;
-	}
-	printf("adding: %s", tokens[0]);
-	exit(0);
-	return (words);
-}
-
-int	str_separate(char *srcstr, char sep, char ***output)
+static int	str_separate(char *srcstr, char sep, char ***output)
 {
 	int		i;
 	int		len;
@@ -131,7 +39,7 @@ int	str_separate(char *srcstr, char sep, char ***output)
 	*output = malloc(numparts * sizeof(char *));
 	if (!(*output))
 	{
-		free(output);
+		// free(output);
 		exit(1);
 	}
 	currentpart = *output;
@@ -149,6 +57,21 @@ int	str_separate(char *srcstr, char sep, char ***output)
 			currentpart++;
 			*currentpart = &(srcstr[i + 1]);
 		}
+		i++;
 	}
 	return (numparts);
+}
+
+int parse_input_array(int argc, char** argv, int** output_int_arr) {
+	int size;
+	char** tokens;
+	tokens = NULL;
+	if(argc == 2) {
+		size = str_separate(argv[1], ' ', &tokens);
+	} else {
+		tokens = argv + 1;
+		size = argc - 1;
+	}
+	*output_int_arr = arr_atoi(tokens, size);
+	return size;
 }

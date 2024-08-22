@@ -13,30 +13,34 @@ typedef struct s_node
 	struct s_node	*prev;
 }	t_node;
 
-// split.c
-int		str_separate(char *srcstr, char sep, char ***output);
+// input_parsing.c
+int parse_input_array(int argc, char** argv, int** output_int_arr);
 
 // utils.c
-void	print_command(char *str);
+void	print_command(const char *str);
 t_node	*create_node(int value);
 int		*arr_atoi(char **tokens, int size);
 
 // checks.c
 int		check_overflow(long n);
 int		check_syntax(const char *n);
-int		has_repetitions(const int *arrayToSort, const int size);
 
 // str_utils.c
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 size_t	ft_strlen(const char *str);
 
-//test_utils.c
+// test_utils.c
 void	printList(t_node *head, int size);
 void	printStrList(char **list, int size);
 void	printIntList(int *arr, int size);
 
-//ft_calloc.c
-void	*ft_calloc(size_t count, size_t size);
+// input_validation.c
+int enough_arguments(int argc, char** argv);
+int	has_duplicates(const int *int_arr, const int size);
+int		is_sorted(const int *arr, const int size);
+
+// stack_sorter.c
+int sort(const int *input_arr, int size);
 
 // === OPERATIONS ===
 

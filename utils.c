@@ -4,10 +4,13 @@
 #include <string.h>
 #include <stddef.h>
 
-void	print_command(char *str)
+void	print_command(const char *str)
 {
 	while (*str)
-		write(1, &str, 1);
+	{
+		write(1, str, 1);
+		str++;
+	}
 	write(1, "\n", 1);
 }
 
