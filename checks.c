@@ -1,6 +1,7 @@
 #include "push_swap.h"
 #include <stdlib.h>
 #include <unistd.h>
+#include <stdio.h>
 
 int	check_syntax(const char *n)
 {
@@ -30,27 +31,25 @@ int	check_overflow(long n)
 	return (1);
 }
 
-int	check_repetition(int *arrayToSort, int size)
+int	has_repetitions(const int *arrayToSort, const int size)
 {
-	long	*arr_dups;
-	int		i;
+	int i;
+	int j;
 
-	arr_dups = malloc(((long)INT_MAX - INT_MIN) * sizeof(long));
-	if (!arr_dups)
-	{
-		free(arr_dups);
-		return (0);
-	}
 	i = 0;
-	while (i < size)
+	while (i < size - 1)
 	{
-		if (arr_dups[arrayToSort[i]])
+		j = i + 1;
+		while (j < size)
 		{
-			write(1, "Error\n", 6);
-			return (0);
+			if (arrayToSort[i] == arrayToSort[j])
+			{
+				write(1, "Error\n", 6);
+				return (1);
+			}
+			j++;
 		}
-		arr_dups[arrayToSort[i]] = 1;
+		i++;
 	}
-	free(arr_dups);
-	return (1);
+	return (0);
 }

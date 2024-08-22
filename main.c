@@ -7,7 +7,8 @@ int	main(int argc, char **argv)
 	int		size;
 	int		*arrayToSort;
 	char	**tokens = NULL;
-
+	Node *stack_a = NULL;
+	
 	if (argc == 1)
 	{
 		return (1);
@@ -28,7 +29,17 @@ int	main(int argc, char **argv)
 	printStrList(tokens, size);
 	arrayToSort = arr_atoi(tokens, size);
 	printf("The final array is:\n");
-	printIntList(arr, size);
+	printIntList(arrayToSort, size);
+	if (has_repetitions(arrayToSort, size))
+	{
+		printf("Duplicates detected!\n");
+		return (2);
+	}
+	initialize(&stack_a, arrayToSort, size);
+	printf("The initialized stack A is:\n");
+	printList(stack_a, size);
+
+
 
 	/*
 	int status = validate_input(argc, argv);

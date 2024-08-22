@@ -25,6 +25,7 @@ int *arr_atoi(char **tokens, int size);
 // checks.c
 int check_overflow(long n);
 int check_syntax(const char *n);
+int	has_repetitions(const int *arrayToSort, const int size);
 
 // str_utils.c
 int	ft_strncmp(const char *s1, const char *s2, size_t n);
@@ -35,6 +36,8 @@ void printList(Node *head, int size);
 void printStrList(char **list, int size);
 void printIntList(int *arr, int size);
 
+//ft_calloc.c
+void	*ft_calloc(size_t count, size_t size);
 
 // === OPERATIONS ===
 
@@ -44,5 +47,5 @@ void	rotate(Node **head);
 void	rev_rotate(Node **head);
 void	double_rotate(Node **head_a, Node **head_b);
 void	double_rev_rotate(Node **head_a,  Node **head_b);
-int initialize(Node* head, int *arr, int *size);
+int initialize(Node **head, const int *arr, const int size);
 

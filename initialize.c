@@ -2,16 +2,15 @@
 #include <stdio.h>
 #include "push_swap.h"
 
-int	initialize(Node *head, int *arr, int *size)
+int	initialize(Node **head, const int *arr, const int size)
 {
 	int		i;
-	Node	*head;
 	Node	*current;
 	Node	*new_node;
 
 	i = 1;
-	head = create_node(arr[0]);
-	current = head;
+	*head = create_node(arr[0]);
+	current = *head;
 	while (i < size)
 	{
 		new_node = create_node(arr[i]);
@@ -20,6 +19,6 @@ int	initialize(Node *head, int *arr, int *size)
 		current = current->next;
 		i++;
 	}
-	current->next = head;
+	current->next = *head;
 	return (0);
 }
