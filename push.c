@@ -9,7 +9,7 @@ void	push_a(void)
 	current.prev = b_node.prev;
 	current.next.prev = current;
 	current.prev.next = current;
-	*b = current;     
+	*b = current;
 }
 
 void	push_b(void)
@@ -21,5 +21,5 @@ void	push_b(void)
 	current.prev = a_node.prev;
 	current.next.prev = current;
 	current.prev.next = current;
-	*a = current;     
+	*a = current;
 }

@@ -4,23 +4,26 @@
 #include <string.h>
 #include <stddef.h>
 
-void    print_command(char *str)
+void	print_command(char *str)
 {
-    while (*str)
-        write(1, &str, 1);
-    write(1, "\n", 1);
+	while (*str)
+		write(1, &str, 1);
+	write(1, "\n", 1);
 }
 
-Node* createNode(int value) {
-    Node *node = (Node*) malloc(sizeof(Node));
-    node->value = value;
-    return node;
+Node	*create_node(int value)
+{
+	Node	*node;
+
+	node = (Node *)malloc(sizeof(Node));
+	node->value = value;
+	return (node);
 }
 
 int	ft_atoi(char *str)
 {
-	int			pol;
-	long		res;
+	int		pol;
+	long	res;
 	char	*p;
 
 	pol = 1;
@@ -33,33 +36,34 @@ int	ft_atoi(char *str)
 		pol = -1;
 	if (*p == '-' || *p == '+')
 		p++;
-    if (!check_syntax(p))
-        return (0);
+	if (!check_syntax(p))
+		return (0);
 	while (*p && *p >= '0' && *p <= '9')
 	{
 		res = res * 10 + (*p - '0');
 		p++;
 	}
-    if (!check_overflow(res * pol))
-        return (0);
+	if (!check_overflow(res * pol))
+		return (0);
 	return (res * pol);
 }
 
-int *arr_atoi(char **tokens, int size)
+int	*arr_atoi(char **tokens, int size)
 {
-    int i;
-    int *nums;
+	int	i;
+	int	*nums;
 
-    i = 0;
-    nums = malloc(size * sizeof(int));
-    while (i < size) {
-        if (!ft_strncmp(tokens[i], "0", 1))
-            nums[i] = 0;
-        else
-            if (ft_atoi(tokens[i]) == 0)
-                exit(1);
-            nums[i] = ft_atoi(tokens[i]);
-        i++;
-    }
-    return (nums);
+	i = 0;
+	nums = malloc(size * sizeof(int));
+	while (i < size)
+	{
+		if (!ft_strncmp(tokens[i], "0", 1))
+			nums[i] = 0;
+		else
+			if (ft_atoi(tokens[i]) == 0)
+				exit(1);
+		nums[i] = ft_atoi(tokens[i]);
+		i++;
+	}
+	return (nums);
 }

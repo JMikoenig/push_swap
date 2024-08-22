@@ -19,7 +19,7 @@ int str_separate(char *srcstr, char sep, char ***output);
 
 // utils.c
 void    print_command(char *str);
-Node* createNode(int value);
+Node* create_node(int value);
 int *arr_atoi(char **tokens, int size);
 
 // checks.c
