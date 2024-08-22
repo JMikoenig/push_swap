@@ -185,7 +185,7 @@ int str_separate(char *srcstr, char sep, char ***output)
 	                           * the string, not including the NULL */
 	{
 		if (srcstr[i] == '\0') {
-			while(srcstr[i+1] == '\0') {
+			            while(srcstr[i+1] == '\0') {
                 i++;
                 numparts --;
             }

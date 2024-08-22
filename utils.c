@@ -1,8 +1,8 @@
 #include "push_swap.h"
-#include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stddef.h>
 
 void    print_command(char *str)
 {
@@ -11,34 +11,10 @@ void    print_command(char *str)
     write(1, "\n", 1);
 }
 
-void printList(Node *head, int size)
-{
-    Node *current = head;
-    printf("\nLinked List: ");
-
-    for (int i = 0; i < size; i++)
-    {
-        printf("%d ", current->value);
-        current = current->next;
-    }
-    printf("\n\n");
-}
-
 Node* createNode(int value) {
     Node *node = (Node*) malloc(sizeof(Node));
     node->value = value;
     return node;
-}
-
-void printStrList(char **list, int size) {
-    if (size <= 0) {
-        printf("Invalid size: %d", size);
-        exit(1);
-    }
-    for(int i=0;i<size;i++) {
-        printf("%s ", list[i]);
-    }
-    printf("\n");
 }
 
 int	ft_atoi(char *str)
@@ -77,7 +53,7 @@ int *arr_atoi(char **tokens, int size)
     i = 0;
     nums = malloc(size * sizeof(int));
     while (i < size) {
-        if (!strcmp(tokens[i], "0"))
+        if (!ft_strncmp(tokens[i], "0", 1))
             nums[i] = 0;
         else
             if (ft_atoi(tokens[i]) == 0)

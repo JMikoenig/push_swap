@@ -1,6 +1,7 @@
 #include <limits.h>
 #define STACK_A 'a'
 #define STACK_B 'b'
+#include <stddef.h>
 
 
 typedef struct node
@@ -14,17 +15,25 @@ typedef struct node
 }				Node;
 
 // split.c
-// int	ft_split(char *str, char separator, char ***tokens);
 int str_separate(char *srcstr, char sep, char ***output);
 
 // utils.c
-void printStrList(char **list, int size);
-void printIntList(int *arr, int size);
+void    print_command(char *str);
+Node* createNode(int value);
 int *arr_atoi(char **tokens, int size);
 
 // checks.c
 int check_overflow(long n);
 int check_syntax(const char *n);
+
+// str_utils.c
+int	ft_strncmp(const char *s1, const char *s2, size_t n);
+size_t	ft_strlen(const char *str);
+
+//test_utils.c
+void printList(Node *head, int size);
+void printStrList(char **list, int size);
+void printIntList(int *arr, int size);
 
 
 // === OPERATIONS ===
@@ -35,8 +44,5 @@ void	rotate(Node **head);
 void	rev_rotate(Node **head);
 void	double_rotate(Node **head_a, Node **head_b);
 void	double_rev_rotate(Node **head_a,  Node **head_b);
-void    print_command(char *str);
-void printList(Node *head, int size);
-Node* createNode(int value);
 int initialize(Node* head, int *arr, int *size);
 
