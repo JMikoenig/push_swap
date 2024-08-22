@@ -2,9 +2,9 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-int check_syntax(const char *n)
+int	check_syntax(const char *n)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	while (*n)
@@ -20,7 +20,7 @@ int check_syntax(const char *n)
 	return (1);
 }
 
-int check_overflow(long n)
+int	check_overflow(long n)
 {
 	if (n > INT_MAX || n < INT_MIN)
 	{
@@ -30,10 +30,10 @@ int check_overflow(long n)
 	return (1);
 }
 
-int check_repetition(int *arrayToSort, int size)
+int	check_repetition(int *arrayToSort, int size)
 {
-	long *arr_dups;
-	int i;
+	long	*arr_dups;
+	int		i;
 
 	arr_dups = malloc(((long)INT_MAX - INT_MIN) * sizeof(long));
 	if (!arr_dups)
