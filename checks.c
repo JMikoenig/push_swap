@@ -53,3 +53,14 @@ int	has_repetitions(const int *arrayToSort, const int size)
 	}
 	return (0);
 }
+
+int	check_sorted(const int *arr, const int size)
+{
+	int	i;
+
+	i = 0;
+	while (i < size - 1)
+		if (arr[i] > arr[i + 1])
+			return (0);
+	return (1);
+}
