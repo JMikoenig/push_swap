@@ -7,7 +7,8 @@ int	main(int argc, char **argv)
 	int		size;
 	int		*arrayToSort;
 	char	**tokens = NULL;
-	Node *stack_a = NULL;
+	t_node	*stack_a = NULL;
+	t_node	*stack_b = NULL;
 	
 	if (argc == 1)
 	{
@@ -38,6 +39,21 @@ int	main(int argc, char **argv)
 	initialize(&stack_a, arrayToSort, size);
 	printf("The initialized stack A is:\n");
 	printList(stack_a, size);
+	push(&stack_a, &stack_b);
+	printf("A ");
+	printList(stack_a, --size);
+	printf("B ");
+	printList(stack_b, 1);
+	push(&stack_a, &stack_b);
+	printf("A ");
+	printList(stack_a, --size);
+	printf("B ");
+	printList(stack_b, 2);
+	push(&stack_a, &stack_b);
+	printf("A ");
+	printList(stack_a, --size);
+	printf("B ");
+	printList(stack_b, 3);
 
 
 
@@ -60,8 +76,8 @@ int	main(int argc, char **argv)
 				// Imprimir error
 		return 1;
 	}
-	Node* stack_a;
-	Node* stack_b;
+	t_node* stack_a;
+	t_node* stack_b;
 	initialize(stack_a, arrayToSort, size);
 
 	*/

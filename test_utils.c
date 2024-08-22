@@ -2,9 +2,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void printList(Node *head, int size)
+void printList(t_node *head, int size)
 {
-    Node *current = head;
+    t_node *current = head;
     printf("\nLinked List: ");
 
     for (int i = 0; i < size; i++)

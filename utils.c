@@ -11,11 +11,11 @@ void	print_command(char *str)
 	write(1, "\n", 1);
 }
 
-Node	*create_node(int value)
+t_node	*create_node(int value)
 {
-	Node	*node;
+	t_node	*node;
 
-	node = (Node *)malloc(sizeof(Node));
+	node = (t_node *)malloc(sizeof(t_node));
 	node->value = value;
 	return (node);
 }

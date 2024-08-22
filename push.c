@@ -1,31 +1,24 @@
 #include "push_swap.h"
 
-void	push_a(Node **head_a, Node **head_b)
+void	push(t_node **head_src, t_node **head_dst)
 {
-	Node	*current;
+	t_node	*current;
 
-	current = &head_a;
-	*head_a = current->next;
-	current->prev->next = current->next;
-	current->next->prev = current->prev;
-	current->next = *head_b;
-	current->prev = (*head_b)->prev;
-	current->next->prev = current;
-	current->prev->next = current;
-	*head_b = current;
-}
-
-void	push_b(Node **head_a, Node **head_b)
-{
-	Node	*current;
-
-	current = &head_b;
-	*head_b = current->next;
-	current->prev->next = current->next;
-	current->next->prev = current->prev;
-	current->next = *head_a;
-	current->prev = (*head_a)->prev;
-	current->next->prev = current;
-	current->prev->next = current;
-	*head_a = current;
+	current = *head_src;
+	*head_src = current->next;
+	current->prev->next = *head_src;
+	(*head_src)->prev = current->prev;
+	if (!(*head_dst))
+	{
+		current->next = current;
+		current->prev = current;
+	}
+	else
+	{
+		current->next = *head_dst;
+		current->prev = (*head_dst)->prev;
+		(*head_dst)->prev = current;
+		current->prev->next = current;
+	}
+	*head_dst = current;
 }
