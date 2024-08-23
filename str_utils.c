@@ -81,7 +81,7 @@ int	str_separate(char *srcstr, char sep, char ***output)
 	len = ft_strlen(srcstr);
 	numparts = char_replace(sep, '\0', &srcstr, len) + 1;
 	*output = initialize_str_array(numparts);
-	numparts = aaaa(srcstr, len, numparts, output);
+	numparts = populate_strings(srcstr, len, numparts, output);
 	return (numparts);
 }
 
