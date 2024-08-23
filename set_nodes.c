@@ -12,6 +12,7 @@
 
 #include "push_swap.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 void	set_position(t_node *lst, int size)
 {
@@ -51,10 +52,12 @@ void	set_target(t_node *a, int size_a, t_node *b, int size_b)
 			size_b--;
 			current_b = current_b->next;
 		}
+		if (!current_a->target)
+			current_a->target = find_highest(b, size);
 		size_a--;
 		current_a = current_a->next;
 	}
-	current_a->target = find_highest(b, size);
+	printf("set_target: %d\n", current_a->target->value);
 }
 
 int	get_cost(t_node *current, int size_a, int size_b)
@@ -68,6 +71,9 @@ int	get_cost(t_node *current, int size_a, int size_b)
 		dist_a = current->pos;
 	else
 		dist_a = size_a - current->pos;
+	
+	printf("get_cost >> target value: %d\n", current->target->value);
+	printf("get_cost >> target above median: %d\n", current->target->above_median);
 	if (current->target->above_median)
 		dist_b = current->target->pos;
 	else
@@ -86,34 +92,7 @@ int	get_cost(t_node *current, int size_a, int size_b)
 
 void	set_nodes(t_node *a, int size_a, t_node *b, int size_b)
 {
-	// int		i;
-	// int		cost;
-	// int		cheapest;
-	// t_node	*current;
-	// t_node	*cheapest_node;
-
-	// i = 0;
-	// cost = 0;
-	// cheapest = INT_MAX;
-	// current = *a;
-	// ========================
 	set_position(a, size_a);
 	set_position(b, size_b);
 	set_target(a, size_a, b, size_b);
-	// ========================
-	// while (i < size_a)
-	// {
-	// 	cost = get_cost(current, size_a, size_b);
-	// 	printf("value: %d, pos: %d, cost: %d\n",
-	// 		current->value,
-	// 		current->pos,
-	// 		cost);
-	// 	if (cost < cheapest)
-	// 	{
-	// 		cheapest = cost;
-	// 		cheapest_node = current;
-	// 	}
-	// 	i++;
-	// 	current = current->next;
-	// }
 }

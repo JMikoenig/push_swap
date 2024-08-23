@@ -16,13 +16,9 @@
 static int	get_next_command(t_node **stack_a, t_node **stack_b,
 	int *size_a, int *size_b)
 {
-	if (*size_b < 2)
-	{
-		push(stack_a, stack_b);
-		(*size_a)--;
-		(*size_b)++;
-		return (2);
-	}
+	t_node	*selected_node;
+	selected_node = get_selected_node(*stack_a, *stack_b, *size_a, *size_b);
+
 	return (0);
 }
 
@@ -42,10 +38,18 @@ int	sort(const int *input_arr, int size)
 	initialize(&stack_a, input_arr, size);
 	size_a = size;
 	size_b = 0;
+	while (size_b < 2)
+	{
+		push(&stack_a, &stack_b);
+		(size_a)--;
+		(size_b)++;
+		printf("2\n");
+	}
 	while (latest_command)
 	{
+		set_nodes(stack_a, size_a, stack_b, size_b);
 		latest_command = get_next_command(&stack_a, &stack_b, &size_a, &size_b);
-		printf("%d", latest_command);
+		printf("latest command: %d\n", latest_command);
 	}
 	return (0);
 }

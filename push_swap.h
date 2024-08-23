@@ -66,6 +66,9 @@ void	set_position(t_node *lst, int size);
 t_node	*find_highest(t_node *lst, int size);
 void	sort_three(t_node **a);
 
+//logic.c
+t_node	*get_selected_node(t_node *stack_a, const t_node *stack_b,  int size_a, int size_b);
+
 // === OPERATIONS ===
 
 void	push(t_node **head_src, t_node **head_dst);
