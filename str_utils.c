@@ -6,7 +6,7 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 18:42:27 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/08/22 18:42:28 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/08/23 14:39:15 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,35 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-static char** initialize_str_array(int size)
+static int	populate_strings(char *str, const int len,
+	int numparts, char ***output)
 {
-	char **output;
+	char	**currentpart;
+	int		i;
+
+	currentpart = *output;
+	*currentpart = str;
+	i = 0;
+	while (i < len)
+	{
+		if (str[i] == '\0')
+		{
+			while (str[i + 1] == '\0')
+			{
+				i++;
+				numparts--;
+			}
+			currentpart++;
+			*currentpart = &(str[i + 1]);
+		}
+		i++;
+	}
+	return (numparts);
+}
+
+static char	**initialize_str_array(int size)
+{
+	char	**output;
 
 	output = malloc(size * sizeof(char *));
 	if (!output)
@@ -25,16 +51,16 @@ static char** initialize_str_array(int size)
 		free(output);
 		exit(1);
 	}
-	return output;
+	return (output);
 }
 
-int char_replace(const char old, const char new, char** str, const int len)
+int	char_replace(const char old, const char new, char **str, const int len)
 {
 	int		replaced_count;
 	int		i;
+
 	i = 0;
 	replaced_count = 0;
-
 	while (i < len)
 	{
 		if ((*str)[i] == old)
@@ -49,31 +75,13 @@ int char_replace(const char old, const char new, char** str, const int len)
 
 int	str_separate(char *srcstr, char sep, char ***output)
 {
-	int		i;
 	int		len;
-	int 	numparts;
-	char	**currentpart;
+	int		numparts;
 
-	i = 0;
 	len = ft_strlen(srcstr);
 	numparts = char_replace(sep, '\0', &srcstr, len) + 1;
 	*output = initialize_str_array(numparts);
-	currentpart = *output;
-	*currentpart = srcstr;
-	while (i < len)
-	{
-		if (srcstr[i] == '\0')
-		{
-			while (srcstr[i + 1] == '\0')
-			{
-				i++;
-				numparts--;
-			}
-			currentpart++;
-			*currentpart = &(srcstr[i + 1]);
-		}
-		i++;
-	}
+	numparts = aaaa(srcstr, len, numparts, output);
 	return (numparts);
 }
 

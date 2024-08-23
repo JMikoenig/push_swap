@@ -6,7 +6,7 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 10:52:54 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/08/22 18:46:49 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/08/23 14:13:58 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <string.h>
-
 
 int	parse_input_array(int argc, char **argv, int **output_int_arr)
 {

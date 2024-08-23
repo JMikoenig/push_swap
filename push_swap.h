@@ -6,7 +6,7 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 18:44:00 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/08/23 13:47:01 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/08/23 14:40:35 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ int		check_syntax(const char *n);
 // str_utils.c
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 size_t	ft_strlen(const char *str);
-int	str_separate(char *srcstr, char sep, char ***output);
+int		str_separate(char *srcstr, char sep, char ***output);
+int		char_replace(const char old, const char new, char **str, const int len);
 
 // test_utils.c
 void	printList(t_node *head, int size);
