@@ -16,51 +16,6 @@
 #include <stdio.h>
 #include <string.h>
 
-static int	str_separate(char *srcstr, char sep, char ***output)
-{
-	int		i;
-	int		len;
-	int		numparts;
-	char	**currentpart;
-
-	i = 0;
-	len = ft_strlen(srcstr);
-	numparts = 0;
-	while (i < len)
-	{
-		if (srcstr[i] == sep)
-		{
-			srcstr[i] = '\0';
-			numparts++;
-		}
-		i++;
-	}
-	numparts++;
-	*output = malloc(numparts * sizeof(char *));
-	if (!(*output))
-	{
-		// free(output);
-		exit(1);
-	}
-	currentpart = *output;
-	*currentpart = srcstr;
-	i = 0;
-	while (i < len)
-	{
-		if (srcstr[i] == '\0')
-		{
-			while (srcstr[i + 1] == '\0')
-			{
-				i++;
-				numparts--;
-			}
-			currentpart++;
-			*currentpart = &(srcstr[i + 1]);
-		}
-		i++;
-	}
-	return (numparts);
-}
 
 int	parse_input_array(int argc, char **argv, int **output_int_arr)
 {

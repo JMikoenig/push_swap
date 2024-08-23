@@ -15,6 +15,68 @@
 #include <unistd.h>
 #include <stdlib.h>
 
+static char** initialize_str_array(int size)
+{
+	char **output;
+
+	output = malloc(size * sizeof(char *));
+	if (!output)
+	{
+		free(output);
+		exit(1);
+	}
+	return output;
+}
+
+int char_replace(const char old, const char new, char** str, const int len)
+{
+	int		replaced_count;
+	int		i;
+	i = 0;
+	replaced_count = 0;
+
+	while (i < len)
+	{
+		if ((*str)[i] == old)
+		{
+			(*str)[i] = new;
+			replaced_count++;
+		}
+		i++;
+	}
+	return (replaced_count);
+}
+
+int	str_separate(char *srcstr, char sep, char ***output)
+{
+	int		i;
+	int		len;
+	int 	numparts;
+	char	**currentpart;
+
+	i = 0;
+	len = ft_strlen(srcstr);
+	numparts = char_replace(sep, '\0', &srcstr, len) + 1;
+	*output = initialize_str_array(numparts);
+	currentpart = *output;
+	*currentpart = srcstr;
+	while (i < len)
+	{
+		if (srcstr[i] == '\0')
+		{
+			while (srcstr[i + 1] == '\0')
+			{
+				i++;
+				numparts--;
+			}
+			currentpart++;
+			*currentpart = &(srcstr[i + 1]);
+		}
+		i++;
+	}
+	return (numparts);
+}
+
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	unsigned char	*us1;

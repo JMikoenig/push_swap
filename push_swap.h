@@ -40,6 +40,7 @@ int		check_syntax(const char *n);
 // str_utils.c
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 size_t	ft_strlen(const char *str);
+int	str_separate(char *srcstr, char sep, char ***output);
 
 // test_utils.c
 void	printList(t_node *head, int size);
