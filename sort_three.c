@@ -6,7 +6,11 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 18:27:55 by jamanzan          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/08/23 14:06:01 by jamanzan         ###   ########.fr       */
+=======
+/*   Updated: 2024/08/23 14:10:01 by jamanzan         ###   ########.fr       */
+>>>>>>> 54915f81e09dcc434413da8efe6edb17b4888f60
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +33,10 @@ t_node	*find_highest(t_node *lst, int size)
 		if (current->value > highest_node -> value)
 			highest_node = current;
 		size--;
+<<<<<<< HEAD
 		i--;
+=======
+>>>>>>> 54915f81e09dcc434413da8efe6edb17b4888f60
 	}
 	return (highest_node);
 }
