@@ -6,13 +6,14 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 18:38:42 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/08/22 18:38:43 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/08/23 13:14:53 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdlib.h>
 
-void	swap(t_node *current, char c)
+void	swap(t_node *current)
 {
 	t_node	*temp;
 
@@ -23,7 +24,7 @@ void	swap(t_node *current, char c)
 	free(temp);
 }
 
-void	swap_both(t_node *a, t_node *b)
+void	double_swap(t_node *a, t_node *b)
 {
 	swap(a);
 	swap(b);

@@ -6,7 +6,7 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 18:44:00 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/08/22 18:44:39 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/08/23 13:47:01 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,23 @@ int		is_sorted(const int *arr, const int size);
 // stack_sorter.c
 int		sort(const int *input_arr, int size);
 
+// set_nodes.c
+void	set_nodes(t_node *a, int size_a, t_node *b, int size_b);
+int		get_cost(t_node *current, int size_a, int size_b);
+void	set_target(t_node *a, int size_a, t_node *b, int size_b);
+void	set_position(t_node *lst, int size);
+
+// sort_three.c
+t_node	*find_highest(t_node *lst, int size);
+void	sort_three(t_node **a);
+
 // === OPERATIONS ===
 
 void	push(t_node **head_src, t_node **head_dst);
 void	rotate(t_node **head);
 void	rev_rotate(t_node **head);
+void	swap(t_node *current);
+void	double_swap(t_node *a, t_node *b);
 void	double_rotate(t_node **head_a, t_node **head_b);
 void	double_rev_rotate(t_node **head_a, t_node **head_b);
 int		initialize(t_node **head, const int *arr, const int size);
