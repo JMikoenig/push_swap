@@ -1,16 +1,16 @@
 0    nothing
 
-1    pa     push a
-2    pb     push b
+2    pa     push a
+3    pb     push b
 
-3    sa     swap a
-4    sb     swap b
-5    ss     swap both
+4    sa     swap a
+5    sb     swap b
+6    ss     swap both
 
-6    ra     rotate a
-7    rb     rotate b
-8    rr     rotate both
+7    ra     rotate a
+8    rb     rotate b
+9    rr     rotate both
 
-9    rra    reverse rotate a
-10   rrb    reverse rotate b
-11   rrr    reverse rotate both
+10    rra    reverse rotate a
+11   rrb    reverse rotate b
+12   rrr    reverse rotate both
