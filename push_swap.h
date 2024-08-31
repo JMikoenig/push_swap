@@ -6,18 +6,23 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 18:44:00 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/08/31 18:39:28 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/08/31 18:43:05 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #define NO_ACTION 0
 #define PA 2
+#define PB 3
+#define SA 4
+#define SB 5
+#define SS 6
 #define RA 7
 #define RB 8
 #define RR 9
 #define RRA 10
 #define RRB 11
 #define RRR 12
+#define STACK_A 'a'
 #define STACK_B 'b'
 #include <limits.h>
 #include <stddef.h>
