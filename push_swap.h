@@ -10,7 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#define STACK_A 'a'
+#define NO_ACTION 0
+#define PA 2
+#define RA 7
+#define RB 8
+#define RR 9
+#define RRA 10
+#define RRB 11
+#define RRR 12
 #define STACK_B 'b'
 #include <limits.h>
 #include <stddef.h>
@@ -67,7 +74,7 @@ t_node	*find_highest(t_node *lst, int size);
 void	sort_three(t_node **a);
 
 //logic.c
-t_node	*get_selected_node(t_node *stack_a, const t_node *stack_b,  int size_a, int size_b);
+int	*get_commands(t_node *stack_a, const t_node *stack_b,  int size_a, int size_b);
 
 // === OPERATIONS ===
 

@@ -70,45 +70,76 @@ static int	perform_next_command(t_node *node, t_node **stack_a,
 	return (command);
 }
 
-static int	get_next_command(t_node **stack_a, t_node **stack_b,
-	int *size_a, int *size_b)
-{
-	t_node	*selected_node;
-	int	command;
+// static int	get_next_command(t_node **stack_a, t_node **stack_b,
+// 	int *size_a, int *size_b)
+// {
+// 	if (size_b < 2)
+// 	{
+// 		return (PA);
+// 	}
+// 	t_node	*selected_node;
+// 	int	command;
 
-	selected_node = get_selected_node(*stack_a, *stack_b, *size_a, *size_b);
-	command = perform_next_command(selected_node, stack_a, stack_b, size_a, size_b);
-	return (command);
-}
+// 	selected_node = get_commands(*stack_a, *stack_b, *size_a, *size_b);
+// 	command = perform_next_command(selected_node, stack_a, stack_b, size_a, size_b);
+// 	return (command);
+// }
 
 int	sort(const int *input_arr, int size)
 {
 	t_node	*stack_a;
 	t_node	*stack_b;
+	t_node	*selected_node;
 	int		size_a;
 	int		size_b;
 	int		latest_command;
+	int done;
+	int i;
+	int *commands;
 
 	stack_a = NULL;
 	stack_b = NULL;
+	done = 0;
+	i = 0;
 	latest_command = 1;
 	if (is_sorted(input_arr, size))
 		return (0);
 	initialize(&stack_a, input_arr, size);
 	size_a = size;
 	size_b = 0;
-	while (size_b < 2)
-	{
-		push(&stack_a, &stack_b);
-		(size_a)--;
-		(size_b)++;
-		printf("2\n");
+	while(!done) {
+		 commands = get_commands(stack_a, stack_b, size_a, size_b);
+		 printIntList(commands, 3);
+		// while(commands[i]) {
+		// 	//perform_next_command(commands[i], stack_a, stack_b, size_a, size_b);
+		// 	printf("latest command: %d\n", commands[i]);
+		// 	i++;
+		// }
+		// i=0;
+		done = 1;
 	}
+	/*
 	while (latest_command)	// size_a > 3 y nos olvidamos de latest_command?
 	{
 		set_nodes(stack_a, size_a, stack_b, size_b);
 		latest_command = get_next_command(&stack_a, &stack_b, &size_a, &size_b);
 		printf("latest command: %d\n", latest_command);
+
+		printf("State after executing the command\n");
+		printf("Stack A\n");
+		printList(stack_a, size_a);
+		printf("Stack B\n");
+		printList(stack_b, size_b);
 	}
+
+	while(!done) {
+		nodo_a_posicionar = get_nextNodo()
+		comandosPara_posicionarNodo = getComandos(..)
+		while(c){
+
+		}
+	}
+	*/
+
 	return (0);
 }
