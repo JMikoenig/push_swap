@@ -6,7 +6,7 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 18:44:00 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/08/23 14:40:35 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/08/31 18:39:28 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,8 @@ t_node	*find_highest(t_node *lst, int size);
 void	sort_three(t_node **a);
 
 //logic.c
-int	*get_commands(t_node *stack_a, const t_node *stack_b,  int size_a, int size_b);
+int		*get_commands(t_node *stack_a, const t_node *stack_b,
+			int size_a, int size_b);
 
 // === OPERATIONS ===
 

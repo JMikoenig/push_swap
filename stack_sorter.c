@@ -6,7 +6,7 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 18:38:58 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/08/22 18:41:05 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/08/31 18:38:05 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ static int	select_command(t_node *node)
 // justo 25 lineas; si hace falta el return puede ser una funcion "print_command(command)"
 // que recibe "command" como input, en base a eso imprime lo que corresponda,
 // y a su vez devuelva el input tal cual
+
+// !!! EL LIMITE ES 4 ARGUMENTOS, CREI QUE ERA 5
 static int	perform_next_command(t_node *node, t_node **stack_a,
 	t_node **stack_b, int *size_a, int *size_b)
 {
@@ -48,7 +50,7 @@ static int	perform_next_command(t_node *node, t_node **stack_a,
 
 	command = select_command(node);
 	if (*size_a == 3)
-			return (0);
+		return (0);
 	if (command == 2)
 	{
 		push(stack_a, stack_b);
@@ -93,9 +95,9 @@ int	sort(const int *input_arr, int size)
 	int		size_a;
 	int		size_b;
 	int		latest_command;
-	int done;
-	int i;
-	int *commands;
+	int		done;
+	int		i;
+	int		*commands;
 
 	stack_a = NULL;
 	stack_b = NULL;
@@ -107,9 +109,10 @@ int	sort(const int *input_arr, int size)
 	initialize(&stack_a, input_arr, size);
 	size_a = size;
 	size_b = 0;
-	while(!done) {
-		 commands = get_commands(stack_a, stack_b, size_a, size_b);
-		 printIntList(commands, 3);
+	while (!done)
+	{
+		commands = get_commands(stack_a, stack_b, size_a, size_b);
+		printIntList(commands, 3);
 		// while(commands[i]) {
 		// 	//perform_next_command(commands[i], stack_a, stack_b, size_a, size_b);
 		// 	printf("latest command: %d\n", commands[i]);
@@ -140,6 +143,5 @@ int	sort(const int *input_arr, int size)
 		}
 	}
 	*/
-
 	return (0);
 }
