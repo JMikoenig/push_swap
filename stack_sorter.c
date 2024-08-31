@@ -15,7 +15,7 @@
 
 static int	select_command(t_node *node)
 {
-	if (!(node->pos) && (!node->target->pos)
+	if (!(node->pos) && (!node->target->pos))
 		return (2);
 	else if (node->above_median && node->target->above_median)
 		return (9);
@@ -51,7 +51,7 @@ static int	perform_next_command(t_node *node, t_node **stack_a,
 			return (0);
 	if (command == 2)
 	{
-		push(*stack_a, *stack_b);
+		push(stack_a, stack_b);
 		(*size_a)--;
 		(*size_b)++;
 	}
@@ -60,14 +60,13 @@ static int	perform_next_command(t_node *node, t_node **stack_a,
 	else if (command == 8)
 		rotate(stack_b);
 	else if (command == 9)
-		double_rotate(*stack_a, *stack_b);
+		double_rotate(stack_a, stack_b);
 	else if (command == 10)
 		rev_rotate(stack_a);
 	else if (command == 11)
 		rev_rotate(stack_b);
 	else if (command == 12)
-		double_rev_rotate(*stack_a, *stack_b);
-	}
+		double_rev_rotate(stack_a, stack_b);
 	return (command);
 }
 
@@ -78,7 +77,7 @@ static int	get_next_command(t_node **stack_a, t_node **stack_b,
 	int	command;
 
 	selected_node = get_selected_node(*stack_a, *stack_b, *size_a, *size_b);
-	command = perform_next_command(t_node selected_node, *stack_a, *stack_b, size_a, size_b);
+	command = perform_next_command(selected_node, stack_a, stack_b, size_a, size_b);
 	return (command);
 }
 
