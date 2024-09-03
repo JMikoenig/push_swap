@@ -6,7 +6,7 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 18:38:24 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/08/22 18:38:24 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/09/04 00:49:45 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stddef.h>
-
-
 
 t_node	*create_node(int value)
 {

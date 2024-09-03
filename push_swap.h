@@ -6,24 +6,10 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 18:44:00 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/08/31 18:43:05 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/09/04 01:12:50 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#define NO_ACTION 0
-#define PA 2
-#define PB 3
-#define SA 4
-#define SB 5
-#define SS 6
-#define RA 7
-#define RB 8
-#define RR 9
-#define RRA 10
-#define RRB 11
-#define RRR 12
-#define STACK_A 'a'
-#define STACK_B 'b'
 #include <limits.h>
 #include <stddef.h>
 
@@ -32,11 +18,6 @@ typedef struct s_node
 	int				value;
 	int				pos;
 	int				above_median;
-	int				final_index;
-	int				ra;
-	int				rb;
-	int				rra;
-	int				rrb;
 	struct s_node	*target;
 	struct s_node	*next;
 	struct s_node	*prev;
@@ -70,7 +51,7 @@ int		has_duplicates(const int *int_arr, const int size);
 int		is_sorted(const int *arr, const int size);
 
 // stack_sorter.c
-int		sort(const int *input_arr, int size);
+void	sort(const int *input_arr, int size);
 
 // set_nodes.c
 void	set_nodes(t_node *a, int size_a, t_node *b, int size_b);
@@ -89,7 +70,7 @@ int		*get_commands(t_node *stack_a, const t_node *stack_b,
 //array_utils.c
 void	array_sort(int arr[], const int n);
 int		find_index_of(const int num, const int arr[], const int size);
-void	get_sorted_arr(const int arr[], const int size, int* output);
+void	get_sorted_arr(const int arr[], const int size, int *output);
 
 // print_command.c
 void	ft_print(const char *str);

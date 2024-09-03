@@ -6,13 +6,13 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 18:36:10 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/08/22 18:36:11 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/09/04 00:56:03 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static  void	push(t_node **head_src, t_node **head_dst)
+static void	push(t_node **head_src, t_node **head_dst)
 {
 	t_node	*current;
 
@@ -35,7 +35,7 @@ static  void	push(t_node **head_src, t_node **head_dst)
 	*head_dst = current;
 }
 
-void push_a(t_node **stack_a, int *size_a, t_node **stack_b, int *size_b) 
+void	push_a(t_node **stack_a, int *size_a, t_node **stack_b, int *size_b)
 {
 	ft_print("pa");
 	push(stack_b, stack_a);
@@ -43,7 +43,7 @@ void push_a(t_node **stack_a, int *size_a, t_node **stack_b, int *size_b)
 	(*size_b)--;
 }
 
-void push_b(t_node **stack_a, int *size_a, t_node **stack_b, int *size_b) 
+void	push_b(t_node **stack_a, int *size_a, t_node **stack_b, int *size_b)
 {
 	ft_print("pb");
 	push(stack_a, stack_b);

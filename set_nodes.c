@@ -6,7 +6,7 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 17:20:09 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/08/23 14:05:19 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/09/04 00:40:11 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ void	set_target(t_node *src, int size_src, t_node *dst, int size_dst)
 		size_src--;
 		current_src = current_src->next;
 	}
-	// printf("set_target: %d\n", current_a->target->value);
 }
 
 int	get_cost(t_node *current, int size_a, int size_b)

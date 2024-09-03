@@ -6,7 +6,7 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 18:41:43 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/08/22 18:41:59 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/09/04 00:27:35 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	enough_arguments(int argc, char **argv)
 		return (0);
 	if (argc == 2 && !argv[1][0])
 		return (0);
+	return (1);
 }
 
 int	has_duplicates(const int *arr, const int size)
