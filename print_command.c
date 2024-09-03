@@ -1,6 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_command.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/03 18:42:05 by jamanzan          #+#    #+#             */
+/*   Updated: 2024/09/03 18:43:08 by jamanzan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 #include <unistd.h>
-
 
 static void	print_something(const char *str)
 {
@@ -12,9 +23,10 @@ static void	print_something(const char *str)
 	write(1, "\n", 1);
 }
 
-void print_command(const int cmd_code)
+void	print_command(const int cmd_code)
 {
-	char  *commands[13]; 
+	char	*commands[13];
+
 	commands[0] = "";
 	commands[1] = "";
 	commands[2] = "pa";
@@ -28,7 +40,5 @@ void print_command(const int cmd_code)
 	commands[10] = "rra";
 	commands[11] = "rrb";
 	commands[12] = "rrr";
-
 	print_something(commands[cmd_code]);
-} 
-
+}
