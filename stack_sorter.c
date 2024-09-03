@@ -6,12 +6,32 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 18:38:58 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/08/31 18:38:05 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/09/04 00:24:23 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
+
+void	final_rotation(t_node **head, const int size)
+{
+	t_node	*highest_node;
+
+	highest_node = find_highest(*head, size);
+	set_position(*head, size);
+	while (highest_node->next != *head)
+	{
+		printf("got in\n");
+		if (highest_node->next->above_median)
+		{
+			rotate_a(head);
+		}
+		if (!(highest_node->next->above_median))
+		{
+			rev_rotate_a(head);
+		}
+	}
+}
 
 static t_node *select_node(const t_node *stack_a, const int size_a, t_node *stack_b, const int size_b)
 {
@@ -180,6 +200,7 @@ int	sort(const int *input_arr, int size)
 		printList(stack_b, size_b);
 		push_a(&stack_a, &size_a, &stack_b, &size_b);
 	}
+	final_rotation(&stack_a, size_a);
 
 	printList(stack_a, size_a);
 	
