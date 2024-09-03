@@ -34,3 +34,19 @@ void	push(t_node **head_src, t_node **head_dst)
 	}
 	*head_dst = current;
 }
+
+void push_a(t_node **stack_a, int *size_a, t_node **stack_b, int *size_b) 
+{
+	print_command(PA);
+	push(stack_b, stack_a);
+	(*size_a)++;
+	(*size_b)--;
+}
+
+void push_b(t_node **stack_a, int *size_a, t_node **stack_b, int *size_b) 
+{
+	print_command(PB);
+	push(stack_a, stack_b);
+	(*size_b)++;
+	(*size_a)--;
+}

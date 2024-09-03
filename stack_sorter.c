@@ -95,13 +95,11 @@ int	sort(const int *input_arr, int size)
 	int		size_a;
 	int		size_b;
 	int		latest_command;
-	int		done;
 	int		i;
 	int		*commands;
 
 	stack_a = NULL;
 	stack_b = NULL;
-	done = 0;
 	i = 0;
 	latest_command = 1;
 	if (is_sorted(input_arr, size))
@@ -109,39 +107,30 @@ int	sort(const int *input_arr, int size)
 	initialize(&stack_a, input_arr, size);
 	size_a = size;
 	size_b = 0;
-	while (!done)
-	{
-		commands = get_commands(stack_a, stack_b, size_a, size_b);
-		printIntList(commands, 3);
-		// while(commands[i]) {
-		// 	//perform_next_command(commands[i], stack_a, stack_b, size_a, size_b);
-		// 	printf("latest command: %d\n", commands[i]);
-		// 	i++;
-		// }
-		// i=0;
-		done = 1;
-	}
-	/*
-	while (latest_command)	// size_a > 3 y nos olvidamos de latest_command?
-	{
-		set_nodes(stack_a, size_a, stack_b, size_b);
-		latest_command = get_next_command(&stack_a, &stack_b, &size_a, &size_b);
-		printf("latest command: %d\n", latest_command);
-
-		printf("State after executing the command\n");
-		printf("Stack A\n");
-		printList(stack_a, size_a);
-		printf("Stack B\n");
-		printList(stack_b, size_b);
+	while (size_a > 3) {
+		push_b(&stack_a, &size_a, &stack_b, &size_b);
 	}
 
-	while(!done) {
-		nodo_a_posicionar = get_nextNodo()
-		comandosPara_posicionarNodo = getComandos(..)
-		while(c){
+	// while (latest_command)	// size_a > 3 y nos olvidamos de latest_command?
+	// {
+	// 	set_nodes(stack_a, size_a, stack_b, size_b);
+	// 	latest_command = get_next_command(&stack_a, &stack_b, &size_a, &size_b);
+	// 	printf("latest command: %d\n", latest_command);
 
-		}
-	}
-	*/
-	return (0);
+	// 	printf("State after executing the command\n");
+	// 	printf("Stack A\n");
+	// 	printList(stack_a, size_a);
+	// 	printf("Stack B\n");
+	// 	printList(stack_b, size_b);
+	// }
+
+	// while(!done) {
+	// 	nodo_a_posicionar = get_nextNodo()
+	// 	comandosPara_posicionarNodo = getComandos(..)
+	// 	while(c){
+
+	// 	}
+	// }
+	// */
+	// return (0);
 }

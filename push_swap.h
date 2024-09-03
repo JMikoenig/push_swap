@@ -32,6 +32,7 @@ typedef struct s_node
 	int				value;
 	int				pos;
 	int				above_median;
+	int				final_index;
 	struct s_node	*target;
 	struct s_node	*next;
 	struct s_node	*prev;
@@ -41,7 +42,6 @@ typedef struct s_node
 int		parse_input_array(int argc, char **argv, int **output_int_arr);
 
 // utils.c
-void	print_command(const char *str);
 t_node	*create_node(int value);
 int		*arr_atoi(char **tokens, int size);
 
@@ -82,9 +82,19 @@ void	sort_three(t_node **a);
 int		*get_commands(t_node *stack_a, const t_node *stack_b,
 			int size_a, int size_b);
 
+//array_utils.c
+void array_sort(int arr[], const int n);
+int find_index_of(const int num, const int arr[], const int size);
+void get_sorted_arr(const int arr[], const int size, int* output);
+
+// print_command.c
+void print_command(const int cmd_code);
+
 // === OPERATIONS ===
 
 void	push(t_node **head_src, t_node **head_dst);
+void	push_a(t_node **stack_a, int *size_a, t_node **stack_b, int *size_b);
+void	push_b(t_node **stack_a, int *size_a, t_node **stack_b, int *size_b);
 void	rotate(t_node **head);
 void	rev_rotate(t_node **head);
 void	swap(t_node *current);
