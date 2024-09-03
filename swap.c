@@ -13,7 +13,7 @@
 #include "push_swap.h"
 #include <stdlib.h>
 
-void	swap(t_node *current)
+static void	swap(t_node *current)
 {
 	t_node	*temp;
 
@@ -26,6 +26,19 @@ void	swap(t_node *current)
 
 void	double_swap(t_node *a, t_node *b)
 {
+	ft_print("ss");
 	swap(a);
 	swap(b);
+}
+
+void	swap_a(t_node *current)
+{
+	ft_print("sa");
+	swap(current);
+}
+
+void	swap_b(t_node *current)
+{
+	ft_print("sb");
+	swap(current);
 }

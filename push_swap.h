@@ -33,6 +33,10 @@ typedef struct s_node
 	int				pos;
 	int				above_median;
 	int				final_index;
+	int				ra;
+	int				rb;
+	int				rra;
+	int				rrb;
 	struct s_node	*target;
 	struct s_node	*next;
 	struct s_node	*prev;
@@ -71,7 +75,7 @@ int		sort(const int *input_arr, int size);
 // set_nodes.c
 void	set_nodes(t_node *a, int size_a, t_node *b, int size_b);
 int		get_cost(t_node *current, int size_a, int size_b);
-void	set_target(t_node *a, int size_a, t_node *b, int size_b);
+void	set_target(t_node *src, int size_src, t_node *dst, int size_dst);
 void	set_position(t_node *lst, int size);
 
 // sort_three.c
@@ -83,22 +87,24 @@ int		*get_commands(t_node *stack_a, const t_node *stack_b,
 			int size_a, int size_b);
 
 //array_utils.c
-void array_sort(int arr[], const int n);
-int find_index_of(const int num, const int arr[], const int size);
-void get_sorted_arr(const int arr[], const int size, int* output);
+void	array_sort(int arr[], const int n);
+int		find_index_of(const int num, const int arr[], const int size);
+void	get_sorted_arr(const int arr[], const int size, int* output);
 
 // print_command.c
-void print_command(const int cmd_code);
+void	ft_print(const char *str);
 
 // === OPERATIONS ===
 
-void	push(t_node **head_src, t_node **head_dst);
 void	push_a(t_node **stack_a, int *size_a, t_node **stack_b, int *size_b);
 void	push_b(t_node **stack_a, int *size_a, t_node **stack_b, int *size_b);
-void	rotate(t_node **head);
-void	rev_rotate(t_node **head);
-void	swap(t_node *current);
-void	double_swap(t_node *a, t_node *b);
+void	rotate_a(t_node **head);
+void	rotate_b(t_node **head);
+void	rev_rotate_a(t_node **head);
+void	rev_rotate_b(t_node **head);
 void	double_rotate(t_node **head_a, t_node **head_b);
 void	double_rev_rotate(t_node **head_a, t_node **head_b);
+void	swap_a(t_node *current);
+void	swap_b(t_node *current);
+void	double_swap(t_node *a, t_node *b);
 int		initialize(t_node **head, const int *arr, const int size);

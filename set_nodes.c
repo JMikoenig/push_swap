@@ -30,34 +30,34 @@ void	set_position(t_node *lst, int size)
 	}
 }
 
-void	set_target(t_node *a, int size_a, t_node *b, int size_b)
+void	set_target(t_node *src, int size_src, t_node *dst, int size_dst)
 {
-	t_node	*current_a;
-	t_node	*current_b;
+	t_node	*current_src;
+	t_node	*current_dst;
 	int		size;
 
-	current_a = a;
-	current_b = b;
-	size = size_b;
-	while (size_a)
+	current_src = src;
+	current_dst = dst;
+	size = size_dst;
+	while (size_src)
 	{
-		while (size_b)
+		while (size_dst)
 		{
-			if (current_a->value > current_b->value
-				&& current_a->value < current_b->prev->value)
+			if (current_src->value > current_dst->value
+				&& current_src->value < current_dst->next->value)
 			{
-				current_a->target = current_b;
+				current_src->target = current_dst->next;
 				break ;
 			}
-			size_b--;
-			current_b = current_b->next;
+			size_dst--;
+			current_dst = current_dst->next;
 		}
-		if (!current_a->target)
-			current_a->target = find_highest(b, size);
-		size_a--;
-		current_a = current_a->next;
+		if (!current_src->target)
+			current_src->target = find_highest(dst, size)->next;
+		size_src--;
+		current_src = current_src->next;
 	}
-	printf("set_target: %d\n", current_a->target->value);
+	// printf("set_target: %d\n", current_a->target->value);
 }
 
 int	get_cost(t_node *current, int size_a, int size_b)
@@ -71,9 +71,6 @@ int	get_cost(t_node *current, int size_a, int size_b)
 		dist_a = current->pos;
 	else
 		dist_a = size_a - current->pos;
-	
-	printf("get_cost >> target value: %d\n", current->target->value);
-	printf("get_cost >> target above median: %d\n", current->target->above_median);
 	if (current->target->above_median)
 		dist_b = current->target->pos;
 	else
