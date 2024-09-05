@@ -6,7 +6,7 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 17:20:09 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/09/05 14:08:04 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/09/05 14:40:22 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,26 +42,16 @@ void	set_target(t_node *src, int size_src, t_node *dst, int size_dst)
 	while (size_src)
 	{
 		current_src->target = find_highest(dst, size)->next;
-		printf("set_target size_b: %d\n", size_src); /////////////////////////////
+		size_dst = size;
 		while (size_dst)
 		{
-			printf("size_dst: %d\n", size_dst); /////////////////////////////
-			printf("src: %d, dst: %d, dst next: %d\n", current_src->value, current_dst->value, current_dst->next->value); /////////////////////////////
 			if (current_src->value > current_dst->value
 				&& current_src->value < current_dst->next->value)
 				current_src->target = current_dst->next;
 			size_dst--;
 			current_dst = current_dst->next;
 		}
-		// if (current_src->target)
-		// 	printf("- inside\ncurrent: %d, target: %d\n", current_src->value, current_src->target->value); /////////////////////////////
-		// if (!current_src->target)
-		// {
-		// 	printf("node: %d, size_dst: %d\n", current_src->value, size); /////////////////////////////
-		// 	current_src->target = find_highest(dst, size)->next;
-		// }
 		size_src--;
-		// printf("- outside\ncurrent: %d, target: %d\n", current_src->value, current_src->target->value); /////////////////////////////
 		current_src = current_src->next;
 	}
 }
