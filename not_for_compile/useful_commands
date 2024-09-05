@@ -3,7 +3,7 @@
 - pasar el checker
 ARG="1 5 2 4 3"; ./push_swap $ARG | ./checker_linux $ARG
 
-- probar arrays de tama;o m
+- probar arrays de tamaño n
 ARG=$(seq 1 15 | sort -R | tr '\n' ' '); ./push_swap $ARG
 
 

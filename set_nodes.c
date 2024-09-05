@@ -6,7 +6,7 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 17:20:09 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/09/05 14:40:22 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/09/05 17:22:02 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,11 @@ void	set_target(t_node *src, int size_src, t_node *dst, int size_dst)
 		{
 			if (current_src->value > current_dst->value
 				&& current_src->value < current_dst->next->value)
-				current_src->target = current_dst->next;
+				{
+					current_src->target = current_dst->next;
+					size_dst--;
+					break ;
+				}
 			size_dst--;
 			current_dst = current_dst->next;
 		}
