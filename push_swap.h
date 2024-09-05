@@ -6,7 +6,7 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 18:44:00 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/09/04 01:12:50 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/09/05 20:26:36 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ int		is_sorted(const int *arr, const int size);
 void	sort(const int *input_arr, int size);
 
 // set_nodes.c
-void	set_nodes(t_node *a, int size_a, t_node *b, int size_b);
+void	set_nodes(t_node *a, int size_a, t_node *b, int size_b, int direction);
 int		get_cost(t_node *current, int size_a, int size_b);
-void	set_target(t_node *src, int size_src, t_node *dst, int size_dst);
+void	set_target(t_node *src, int size_src, t_node *dst, int size_dst, int direction);
 void	set_position(t_node *lst, int size);
 
 // sort_three.c

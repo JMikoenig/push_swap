@@ -6,7 +6,7 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 17:20:09 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/09/05 20:08:43 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/09/05 20:30:02 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	set_position(t_node *lst, int size)
 	}
 }
 
-void	set_target(t_node *src, int size_src, t_node *dst, int size_dst)
+void	set_target(t_node *src, int size_src, t_node *dst, int size_dst, int direction)
 {
 	t_node	*current_src;
 	t_node	*current_dst;
@@ -41,19 +41,32 @@ void	set_target(t_node *src, int size_src, t_node *dst, int size_dst)
 	size = size_dst;
 	while (size_src)
 	{
-		printf("== outer loop in set_target ==\n"); //////////////////////////////////////////////////
+		// printf("== outer loop in set_target ==\n"); //////////////////////////////////////////////////
 		current_src->target = find_highest(dst, size)->next;
 		size_dst = size;
 		while (size_dst)
 		{
-			printf("== inner loop in set_target ==\n"); //////////////////////////////////////////////////
-			if (current_src->value < current_dst->value
-				&& current_src->value > current_dst->next->value)
+			// printf("== inner loop in set_target ==\n"); //////////////////////////////////////////////////
+			if (direction)
+			{
+				if (current_src->value < current_dst->value
+					&& current_src->value > current_dst->next->value)
 				{
 					current_src->target = current_dst->next;
 					size_dst--;
 					break ;
 				}
+			}
+			else
+			{
+				if (current_src->value > current_dst->value
+					&& current_src->value < current_dst->next->value)
+				{
+					current_src->target = current_dst->next;
+					size_dst--;
+					break ;
+				}
+			}
 			size_dst--;
 			current_dst = current_dst->next;
 		}
@@ -89,12 +102,12 @@ int	get_cost(t_node *current, int size_a, int size_b)
 	return (cost);
 }
 
-void	set_nodes(t_node *a, int size_a, t_node *b, int size_b)
+void	set_nodes(t_node *a, int size_a, t_node *b, int size_b, int direction)
 {
-	printf("== inside set_nodes ==\n"); //////////////////////////////////////////////////
+	// printf("== inside set_nodes ==\n"); //////////////////////////////////////////////////
 	set_position(a, size_a);
 	set_position(b, size_b);
-	printf("== before set_target ==\n"); //////////////////////////////////////////////////
-	set_target(a, size_a, b, size_b);
-	printf("== after set_target ==\n"); //////////////////////////////////////////////////
+	// printf("== before set_target ==\n"); //////////////////////////////////////////////////
+	set_target(b, size_b, a, size_a, direction);
+	// printf("== after set_target ==\n"); //////////////////////////////////////////////////
 }

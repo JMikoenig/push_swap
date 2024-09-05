@@ -6,7 +6,7 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 18:38:58 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/09/05 20:14:10 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/09/05 20:30:28 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,20 +96,31 @@ void	sort(const int *input_arr, int size)
 	//////////////////////////////////////////////////
 	while (size_a > 3)
 	{
-		printf("=== STACK A ===\n"); //////////////////////////////////////////////////
-		printList(stack_a, size_a); //////////////////////////////////////////////////
-		printf("=== STACK B ===\n"); //////////////////////////////////////////////////
-		printList(stack_b, size_b); //////////////////////////////////////////////////
-		set_nodes(stack_a, size_a, stack_b, size_b);
+		// printf("=== STACK A ===\n"); //////////////////////////////////////////////////
+		// printList(stack_a, size_a); //////////////////////////////////////////////////
+		// printf("=== STACK B ===\n"); //////////////////////////////////////////////////
+		// printList(stack_b, size_b); //////////////////////////////////////////////////
+		set_nodes(stack_b, size_b, stack_a, size_a, 1);
 		selected_node = select_node(size_a, stack_a, size_b);
 		move_on_top(selected_node, &stack_b, &stack_a);
 		push_b(&stack_a, &size_a, &stack_b, &size_b);
 	}
 	sort_three(&stack_a);
-	// final_rotation(&stack_a, size_a);
-	printf("========== END ==========\n"); //////////////////////////////////////////////////
-	printf("=== STACK A ===\n"); //////////////////////////////////////////////////
-	printList(stack_a, size_a); //////////////////////////////////////////////////
-	printf("=== STACK B ===\n"); //////////////////////////////////////////////////
-	printList(stack_b, size_b); //////////////////////////////////////////////////
+	while (size_b > 0)
+	{
+		set_nodes(stack_a, size_a, stack_b, size_b, 0);
+		selected_node = select_node(size_a, stack_b, size_b);
+		// printf(" - STACK A -\n"); //////////////////////////////////////////////////
+		// printList(stack_a, size_a); //////////////////////////////////////////////////
+		// printf(" - STACK B -\n"); //////////////////////////////////////////////////
+		// printList(stack_b, size_b); //////////////////////////////////////////////////
+		move_on_top(selected_node, &stack_a, &stack_b);
+		push_a(&stack_a, &size_a, &stack_b, &size_b);
+	}
+	final_rotation(&stack_a, size_a);
+	// printf("========== END ==========\n"); //////////////////////////////////////////////////
+	// printf("=== STACK A ===\n"); //////////////////////////////////////////////////
+	// printList(stack_a, size_a); //////////////////////////////////////////////////
+	// printf("=== STACK B ===\n"); //////////////////////////////////////////////////
+	// printList(stack_b, size_b); //////////////////////////////////////////////////
 }
