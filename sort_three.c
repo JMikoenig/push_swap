@@ -6,7 +6,7 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 18:27:55 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/09/04 00:42:06 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/09/05 11:06:50 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ t_node	*find_highest(t_node *lst, int size)
 		return (NULL);
 	current = lst;
 	highest_node = current;
-	while (size - 1)
+	while (size)
 	{
 		current = current->next;
-		if (current->value > highest_node -> value)
+		if (current->value > highest_node->value)
 			highest_node = current;
 		size--;
 	}
