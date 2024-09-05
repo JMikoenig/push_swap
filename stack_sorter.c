@@ -6,7 +6,7 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 18:38:58 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/09/05 18:52:25 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/09/05 20:14:10 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,18 @@ void	final_rotation(t_node **head, const int size)
 }
 
 static t_node	*select_node(const int size_a,
-				t_node *stack_b, const int size_b)
+				t_node *stack_a, const int size_b)
 {
 	int		i;
 	t_node	*out;
 	t_node	*current;
 
-	out = stack_b;
-	current = stack_b->next;
+	out = stack_a;
+	current = stack_a->next;
 	i = 1;
-	while (i < size_b)
+	while (i < size_a)
 	{
-		if (get_cost(current, size_b, size_a) < get_cost(out, size_b, size_a))
+		if (get_cost(current, size_a, size_b) < get_cost(out, size_a, size_b))
 			out = current;
 		current = current->next;
 		i++;
@@ -91,21 +91,25 @@ void	sort(const int *input_arr, int size)
 	initialize(&stack_a, input_arr, size);
 	size_a = size;
 	size_b = 0;
+	push_b(&stack_a, &size_a, &stack_b, &size_b);
+	push_b(&stack_a, &size_a, &stack_b, &size_b);
+	//////////////////////////////////////////////////
 	while (size_a > 3)
-		push_b(&stack_a, &size_a, &stack_b, &size_b);
-	sort_three(&stack_a);
-	while (size_b > 0)
 	{
+		printf("=== STACK A ===\n"); //////////////////////////////////////////////////
+		printList(stack_a, size_a); //////////////////////////////////////////////////
+		printf("=== STACK B ===\n"); //////////////////////////////////////////////////
+		printList(stack_b, size_b); //////////////////////////////////////////////////
 		set_nodes(stack_a, size_a, stack_b, size_b);
-		selected_node = select_node(size_a, stack_b, size_b);
-		// printf(" - STACK A -\n"); //////////////////////////////////////////////////
-		// printList(stack_a, size_a); //////////////////////////////////////////////////
-		// printf(" - STACK B -\n"); //////////////////////////////////////////////////
-		// printList(stack_b, size_b); //////////////////////////////////////////////////
-		move_on_top(selected_node, &stack_a, &stack_b);
-		push_a(&stack_a, &size_a, &stack_b, &size_b);
+		selected_node = select_node(size_a, stack_a, size_b);
+		move_on_top(selected_node, &stack_b, &stack_a);
+		push_b(&stack_a, &size_a, &stack_b, &size_b);
 	}
-	final_rotation(&stack_a, size_a);
-	// printf("\n ===== END =====\n"); //////////////////////////////////////////////////
-	// printList(stack_a, size_a); //////////////////////////////////////////////////
+	sort_three(&stack_a);
+	// final_rotation(&stack_a, size_a);
+	printf("========== END ==========\n"); //////////////////////////////////////////////////
+	printf("=== STACK A ===\n"); //////////////////////////////////////////////////
+	printList(stack_a, size_a); //////////////////////////////////////////////////
+	printf("=== STACK B ===\n"); //////////////////////////////////////////////////
+	printList(stack_b, size_b); //////////////////////////////////////////////////
 }
