@@ -6,14 +6,21 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 18:42:27 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/08/23 14:39:15 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/09/08 15:47:39 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
+
+static size_t	ft_strlen(const char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
 
 static int	populate_strings(char *str, const int len,
 	int numparts, char ***output)
@@ -54,7 +61,8 @@ static char	**initialize_str_array(int size)
 	return (output);
 }
 
-int	char_replace(const char old, const char new, char **str, const int len)
+static int	char_replace(const char old,
+	const char new, char **str, const int len)
 {
 	int		replaced_count;
 	int		i;
@@ -83,29 +91,4 @@ int	str_separate(char *srcstr, char sep, char ***output)
 	*output = initialize_str_array(numparts);
 	numparts = populate_strings(srcstr, len, numparts, output);
 	return (numparts);
-}
-
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
-{
-	unsigned char	*us1;
-	unsigned char	*us2;
-
-	if (!n)
-		return (0);
-	us1 = (unsigned char *) s1;
-	us2 = (unsigned char *) s2;
-	while (*us1 && (*us1 == *us2) && --n)
-		if (*us1++ != *us2++)
-			return (*us1 - *us2);
-	return (*us1 - *us2);
-}
-
-size_t	ft_strlen(const char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
 }

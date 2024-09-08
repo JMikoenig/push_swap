@@ -6,11 +6,11 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 18:41:43 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/09/04 00:27:35 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/09/08 15:43:24 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "push_swap.h"
 
 int	enough_arguments(int argc, char **argv)
 {

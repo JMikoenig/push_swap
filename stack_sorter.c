@@ -6,13 +6,11 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 18:38:58 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/09/08 14:43:53 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/09/08 16:49:09 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 static void	final_rotation(t_node **head, const int size)
 {
@@ -56,7 +54,8 @@ static int	get_cost(t_node *current, int size_src, int size_dst)
 	return (cost);
 }
 
-static t_node	*select_node(t_node *stack_b, const int size_a, const int size_b)
+static t_node	*select_node(t_node *stack_b,
+	const int size_a, const int size_b)
 {
 	int		i;
 	t_node	*out;
@@ -116,7 +115,7 @@ void	sort(const int *input_arr, int size)
 	size_b = 0;
 	while (size_a > 3)
 		push_b(&stack_a, &size_a, &stack_b, &size_b);
-	sort_three(&stack_a);
+	sort_three(&stack_a); // sort_specific_size(int size) >> este parametro redirecciona a la funcion apropiada
 	while (size_b > 0)
 	{
 		set_nodes(stack_a, size_a, stack_b, size_b);
@@ -125,4 +124,5 @@ void	sort(const int *input_arr, int size)
 		push_a(&stack_a, &size_a, &stack_b, &size_b);
 	}
 	final_rotation(&stack_a, size_a);
+	free_stacks(stack_a, stack_b);
 }

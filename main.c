@@ -6,13 +6,11 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 18:44:55 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/08/22 18:45:10 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/09/08 15:43:38 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdlib.h>
-#include <stdio.h>
 
 int	main(int argc, char **argv)
 {

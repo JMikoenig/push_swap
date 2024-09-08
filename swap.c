@@ -6,12 +6,11 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 18:38:42 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/08/23 13:14:53 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/09/08 15:46:48 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdlib.h>
 
 static void	swap(t_node *current)
 {

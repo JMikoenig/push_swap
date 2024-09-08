@@ -6,12 +6,10 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 18:42:14 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/09/04 01:13:10 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/09/08 15:40:27 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
 #include "push_swap.h"
 
 int	initialize(t_node **head, const int *arr, const int size)

@@ -6,12 +6,11 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 18:36:31 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/09/04 00:54:43 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/09/08 15:45:57 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 static void	rev_rotate(t_node **head)
 {

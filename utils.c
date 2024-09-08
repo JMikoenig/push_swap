@@ -6,25 +6,28 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 18:38:24 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/09/04 00:49:45 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/09/08 15:46:57 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdlib.h>
-#include <string.h>
-#include <stddef.h>
 
-t_node	*create_node(int value)
+static int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	t_node	*node;
+	unsigned char	*us1;
+	unsigned char	*us2;
 
-	node = (t_node *)malloc(sizeof(t_node));
-	node->value = value;
-	return (node);
+	if (!n)
+		return (0);
+	us1 = (unsigned char *) s1;
+	us2 = (unsigned char *) s2;
+	while (*us1 && (*us1 == *us2) && --n)
+		if (*us1++ != *us2++)
+			return (*us1 - *us2);
+	return (*us1 - *us2);
 }
 
-int	ft_atoi(char *str)
+static int	ft_atoi(char *str)
 {
 	int		pol;
 	long	res;
@@ -70,4 +73,33 @@ int	*arr_atoi(char **tokens, int size)
 		i++;
 	}
 	return (nums);
+}
+
+t_node	*find_highest(t_node *lst, int size)
+{
+	t_node	*highest_node;
+	t_node	*current;
+
+	if (!lst)
+		return (NULL);
+	current = lst;
+	highest_node = current;
+	while (size)
+	{
+		current = current->next;
+		if (current->value > highest_node->value)
+			highest_node = current;
+		size--;
+	}
+	return (highest_node);
+}
+
+void	ft_print(const char *str)
+{
+	while (*str)
+	{
+		write(1, str, 1);
+		str++;
+	}
+	write(1, "\n", 1);
 }

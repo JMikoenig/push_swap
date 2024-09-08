@@ -6,14 +6,11 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 18:36:21 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/08/22 18:36:21 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/09/08 15:42:37 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdio.h>
 
 int	check_syntax(const char *n)
 {
