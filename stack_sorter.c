@@ -6,7 +6,7 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 18:38:58 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/09/05 18:52:25 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/09/08 14:08:20 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ void	final_rotation(t_node **head, const int size)
 	}
 }
 
-static t_node	*select_node(const int size_a,
-				t_node *stack_b, const int size_b)
+static t_node	*select_node(t_node *stack_b, const int size_a, const int size_b)
 {
 	int		i;
 	t_node	*out;
@@ -39,6 +38,7 @@ static t_node	*select_node(const int size_a,
 	out = stack_b;
 	current = stack_b->next;
 	i = 1;
+	// printf("size a: %d, size b: %d\n", size_a, size_b); //////////////////////////////////////////////////
 	while (i < size_b)
 	{
 		if (get_cost(current, size_b, size_a) < get_cost(out, size_b, size_a))
@@ -46,34 +46,32 @@ static t_node	*select_node(const int size_a,
 		current = current->next;
 		i++;
 	}
+	// printf("selected node: %d\n", out->value); //////////////////////////////////////////////////
 	return (out);
 }
 
 static void	move_on_top(t_node *node, t_node **stack_a, t_node **stack_b)
 {
-	while (node != *stack_b || node->target != *stack_a)
+	if (node->above_median && node->target->above_median)
+		while (node->target != *stack_a && node != *stack_b)
+			double_rotate(stack_a, stack_b);
+	else if (!(node->above_median) && !(node->target->above_median))
+		while (node->target != *stack_a && node != *stack_b)
+			double_rev_rotate(stack_a, stack_b);
+	while (*stack_b != node)
 	{
-		if (node != *stack_b && node->target != *stack_a) // si ninguno es la cabeza (pero y si above_median 1 y 0?)
-		{
-			if (node->above_median && node->target->above_median)
-				double_rotate(stack_a, stack_b);
-			else if (!(node->above_median) && !(node->target->above_median))
-				double_rev_rotate(stack_a, stack_b);
-		}
-		if (node->above_median && node != *stack_b)
+		if (node->above_median)
 			rotate_b(stack_b);
-		else if (!(node->above_median) && node != *stack_b)
+		else
 			rev_rotate_b(stack_b);
-		if (node->target->above_median && node->target != *stack_a)
-			rotate_a(stack_a);
-		else if (!(node->target->above_median) && node->target != *stack_b)
-			rev_rotate_a(stack_a);
-		// printf("=== unexpected state info ===\n"); //////////////////////////////////////////////////
-		// printf("node: %d\n", node->value); //////////////////////////////////////////////////
-		// printf("node target: %d\n", node->target->value); //////////////////////////////////////////////////
-		// exit(100);
 	}
-	return ;
+	while (*stack_a != node->target)
+	{
+		if (node->target->above_median)
+			rotate_a(stack_a);
+		else
+			rev_rotate_a(stack_a);
+	}
 }
 
 void	sort(const int *input_arr, int size)
@@ -97,13 +95,14 @@ void	sort(const int *input_arr, int size)
 	while (size_b > 0)
 	{
 		set_nodes(stack_a, size_a, stack_b, size_b);
-		selected_node = select_node(size_a, stack_b, size_b);
+		selected_node = select_node(stack_b, size_a, size_b);
 		// printf(" - STACK A -\n"); //////////////////////////////////////////////////
 		// printList(stack_a, size_a); //////////////////////////////////////////////////
 		// printf(" - STACK B -\n"); //////////////////////////////////////////////////
 		// printList(stack_b, size_b); //////////////////////////////////////////////////
 		move_on_top(selected_node, &stack_a, &stack_b);
 		push_a(&stack_a, &size_a, &stack_b, &size_b);
+		// printf("--- PUSH ---\n"); //////////////////////////////////////////////////
 	}
 	final_rotation(&stack_a, size_a);
 	// printf("\n ===== END =====\n"); //////////////////////////////////////////////////

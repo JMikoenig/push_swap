@@ -6,7 +6,7 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 17:20:09 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/09/05 18:52:18 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/09/08 14:08:06 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,35 +55,37 @@ void	set_target(t_node *src, int size_src, t_node *dst, int size_dst)
 			size_dst--;
 			current_dst = current_dst->next;
 		}
+		// printf("node: %d, p: %d, a: %d || t: %d, tp: %d, ta: %d\n", current_src->value, current_src->pos, current_src->above_median, current_src->target->value, current_src->target->pos, current_src->target->above_median); //////////////////////////////////////////////////
 		size_src--;
 		current_src = current_src->next;
 	}
 }
 
-int	get_cost(t_node *current, int size_a, int size_b)
+int	get_cost(t_node *current, int size_src, int size_dst)
 {
 	int	cost;
-	int	dist_a;
-	int	dist_b;
+	int	dist_src;
+	int	dist_dst;
 
 	cost = 0;
 	if (current->above_median)
-		dist_a = current->pos;
+		dist_src = current->pos;
 	else
-		dist_a = size_a - current->pos;
+		dist_src = size_src - current->pos;
 	if (current->target->above_median)
-		dist_b = current->target->pos;
+		dist_dst = current->target->pos;
 	else
-		dist_b = size_b - current->target->pos;
+		dist_dst = size_dst - current->target->pos;
 	if (current->above_median != current->target->above_median)
-		cost = dist_a + dist_b;
+		cost = dist_src + dist_dst;
 	else
 	{
-		if (dist_a > dist_b)
-			cost = dist_a;
+		if (dist_src > dist_dst)
+			cost = dist_src;
 		else
-			cost = dist_b;
+			cost = dist_dst;
 	}
+	// printf("node: %d, cost: %d\n", current->value, cost); //////////////////////////////////////////////////
 	return (cost);
 }
 
