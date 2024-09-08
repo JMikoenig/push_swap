@@ -6,7 +6,7 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 18:38:58 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/09/08 14:08:20 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/09/08 14:43:53 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void	final_rotation(t_node **head, const int size)
+static void	final_rotation(t_node **head, const int size)
 {
 	t_node	*highest_node;
 
@@ -29,6 +29,33 @@ void	final_rotation(t_node **head, const int size)
 	}
 }
 
+static int	get_cost(t_node *current, int size_src, int size_dst)
+{
+	int	cost;
+	int	dist_src;
+	int	dist_dst;
+
+	cost = 0;
+	if (current->above_median)
+		dist_src = current->pos;
+	else
+		dist_src = size_src - current->pos;
+	if (current->target->above_median)
+		dist_dst = current->target->pos;
+	else
+		dist_dst = size_dst - current->target->pos;
+	if (current->above_median != current->target->above_median)
+		cost = dist_src + dist_dst;
+	else
+	{
+		if (dist_src > dist_dst)
+			cost = dist_src;
+		else
+			cost = dist_dst;
+	}
+	return (cost);
+}
+
 static t_node	*select_node(t_node *stack_b, const int size_a, const int size_b)
 {
 	int		i;
@@ -38,7 +65,6 @@ static t_node	*select_node(t_node *stack_b, const int size_a, const int size_b)
 	out = stack_b;
 	current = stack_b->next;
 	i = 1;
-	// printf("size a: %d, size b: %d\n", size_a, size_b); //////////////////////////////////////////////////
 	while (i < size_b)
 	{
 		if (get_cost(current, size_b, size_a) < get_cost(out, size_b, size_a))
@@ -46,7 +72,6 @@ static t_node	*select_node(t_node *stack_b, const int size_a, const int size_b)
 		current = current->next;
 		i++;
 	}
-	// printf("selected node: %d\n", out->value); //////////////////////////////////////////////////
 	return (out);
 }
 
@@ -96,15 +121,8 @@ void	sort(const int *input_arr, int size)
 	{
 		set_nodes(stack_a, size_a, stack_b, size_b);
 		selected_node = select_node(stack_b, size_a, size_b);
-		// printf(" - STACK A -\n"); //////////////////////////////////////////////////
-		// printList(stack_a, size_a); //////////////////////////////////////////////////
-		// printf(" - STACK B -\n"); //////////////////////////////////////////////////
-		// printList(stack_b, size_b); //////////////////////////////////////////////////
 		move_on_top(selected_node, &stack_a, &stack_b);
 		push_a(&stack_a, &size_a, &stack_b, &size_b);
-		// printf("--- PUSH ---\n"); //////////////////////////////////////////////////
 	}
 	final_rotation(&stack_a, size_a);
-	// printf("\n ===== END =====\n"); //////////////////////////////////////////////////
-	// printList(stack_a, size_a); //////////////////////////////////////////////////
 }
