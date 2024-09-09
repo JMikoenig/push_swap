@@ -6,7 +6,7 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 18:27:55 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/09/09 14:38:04 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/09/09 21:22:34 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,15 @@ void	sort_three(t_node **a)
 
 void	short_sort(t_node **a, int size)
 {
+	// printf("=== SHORT SORT | SIZE: %d ===\n", size); //////////////////////////////////////////////////
 	if (size == 1)
 		return ;
 	if (size == 2)
 		sort_two(a);
 	if (size == 3)
+	{
+		// printf("=== SORT THREE ===\n"); //////////////////////////////////////////////////
 		sort_three(a);
+	}
+	return ;
 }
