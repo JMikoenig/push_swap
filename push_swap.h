@@ -6,7 +6,7 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 18:44:00 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/09/09 13:40:10 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/09/09 22:31:56 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <stdio.h>
 
 typedef struct s_node
 {
@@ -59,20 +58,24 @@ void	set_target(t_node *src, int size_src, t_node *dst, int size_dst);
 void	set_position(t_node *lst, int size);
 void	free_stack(t_node *head);
 
-// sort_three.c
+// sort_short.c
 void	sort_three(t_node **a);
 void	short_sort(t_node **a, int size);
+
 
 // === OPERATIONS ===
 
 void	push_a(t_node **stack_a, int *size_a, t_node **stack_b, int *size_b);
 void	push_b(t_node **stack_a, int *size_a, t_node **stack_b, int *size_b);
+
 void	rotate_a(t_node **head);
 void	rotate_b(t_node **head);
+void	double_rotate(t_node **head_a, t_node **head_b);
+
 void	rev_rotate_a(t_node **head);
 void	rev_rotate_b(t_node **head);
-void	double_rotate(t_node **head_a, t_node **head_b);
 void	double_rev_rotate(t_node **head_a, t_node **head_b);
+
 void	swap_a(t_node *current);
 void	swap_b(t_node *current);
 void	double_swap(t_node *a, t_node *b);

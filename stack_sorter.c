@@ -6,24 +6,11 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 18:38:58 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/09/09 21:25:46 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/09/09 22:29:25 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-// static void	printList(t_node *head, int size)
-// {
-// 	t_node	*current = head;
-// 	printf("\nLinked List: ");
-
-// 	for (int i = 0; i < size; i++)
-// 	{
-// 		printf("%d ", current->value);
-// 		current = current->next;
-// 	}
-// 	printf("\n\n");
-// }
 
 static void	final_rotation(t_node **head, const int size)
 {
@@ -75,18 +62,15 @@ static t_node	*select_node(t_node *stack_b,
 	t_node	*current;
 
 	out = stack_b;
-	// printf("node: %d, p: %d, a: %d || target: %d, p: %d, a: %d || cost: %d\n", stack_b->value, stack_b->pos, stack_b->above_median, stack_b->target->value, stack_b->target->pos, stack_b->target->above_median, get_cost(stack_b, size_b, size_a)); //////////////////////////////////////////////////
 	current = stack_b->next;
 	i = 1;
 	while (i < size_b)
 	{
-		// printf("node: %d, p: %d, a: %d || target: %d, p: %d, a: %d || cost: %d\n", current->value, current->pos, current->above_median, current->target->value, current->target->pos, current->target->above_median, get_cost(current, size_b, size_a)); //////////////////////////////////////////////////
 		if (get_cost(current, size_b, size_a) < get_cost(out, size_b, size_a))
 			out = current;
 		current = current->next;
 		i++;
 	}
-	// printf("selected: %d\n", out->value); //////////////////////////////////////////////////
 	return (out);
 }
 
@@ -131,24 +115,14 @@ void	sort(int *input_arr, int size)
 	size_b = 0;
 	while (size_a > 3)
 		push_b(&stack_a, &size_a, &stack_b, &size_b);
-	// printList(stack_a, size_a); //////////////////////////////////////////////////
 	short_sort(&stack_a, size_a);
-	// printList(stack_a, size_a); //////////////////////////////////////////////////
 	while (size_b > 0)
 	{
 		set_nodes(stack_a, size_a, stack_b, size_b);
 		selected_node = select_node(stack_b, size_a, size_b);
 		move_on_top(selected_node, &stack_a, &stack_b);
-		// printf("=== PUSHING ===\n"); //////////////////////////////////////////////////
-		// printList(stack_a, size_a); //////////////////////////////////////////////////
-		// printList(stack_b, size_b); //////////////////////////////////////////////////
 		push_a(&stack_a, &size_a, &stack_b, &size_b);
-		// printf("=== PUSHED ===\n"); //////////////////////////////////////////////////
-		// printList(stack_a, size_a); //////////////////////////////////////////////////
-		// printList(stack_b, size_b); //////////////////////////////////////////////////
 	}
 	final_rotation(&stack_a, size_a);
-	// printf("=== FINISHED ===\n"); //////////////////////////////////////////////////
-	// printList(stack_a, size_a); //////////////////////////////////////////////////
 	free_stack(stack_a);
 }
