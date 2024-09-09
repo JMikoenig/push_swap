@@ -6,7 +6,7 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 17:20:09 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/09/08 17:10:38 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/09/09 13:58:54 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@ t_node	*create_node(int value)
 	t_node	*node;
 
 	node = (t_node *)malloc(sizeof(t_node));
+	if (!node)
+	{
+		free(node);
+		return (NULL);
+	}
 	node->value = value;
 	return (node);
 }
@@ -73,20 +78,21 @@ void	set_nodes(t_node *a, int size_a, t_node *b, int size_b)
 	set_target(b, size_b, a, size_a);
 }
 
-void	free_stacks(t_node *a, t_node *b)
+void	free_stack(t_node *head)
 {
 	t_node	*current;
 
-	current = a->next;
-	while (current->next != NULL)
+	if (head != NULL)
 	{
-		free(current->prev);
-		current = current->next;
+		current = head->next;
+		while (current != head)
+		{
+			current = current->next;
+			current->prev = current->prev->prev;
+			free(current->prev->next);
+			current->prev->next = current;
+		}
+		free(head);
 	}
-	current = b->next;
-	while (current->next != NULL)
-	{
-		free(current->prev);
-		current = current->next;
-	}
+	return ;
 }

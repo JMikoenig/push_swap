@@ -6,7 +6,7 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 18:38:42 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/09/08 15:46:48 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/09/09 13:59:12 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,18 @@
 
 static void	swap(t_node *current)
 {
-	t_node	*temp;
+	t_node	*tmp;
 
-	temp = (t_node *)malloc(sizeof(t_node));
-	temp->value = current->value;
+	tmp = (t_node *)malloc(sizeof(t_node));
+	if (!tmp)
+	{
+		free(tmp);
+		return ;
+	}
+	tmp->value = current->value;
 	current->value = current->next->value;
-	current->next->value = temp->value;
-	free(temp);
+	current->next->value = tmp->value;
+	free(tmp);
 }
 
 void	double_swap(t_node *a, t_node *b)

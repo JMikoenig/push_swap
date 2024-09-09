@@ -6,18 +6,31 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 18:27:55 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/09/08 16:23:44 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/09/09 11:15:01 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdlib.h>
+#include <stdio.h>
 
-void	sort_two(t_node **a)
+static void	sort_two(t_node **a)
 {
 	if ((*a)->value > (*a)->next->value)
 		swap_a(*a);
+	return ;
 }
 
+// busca el nodo con el mayor valor
+// 1. si el mayor es la cabeza, mandalo al final
+	// 3 1 2 >> 1 2 3	DONE
+	// 3 2 1 >> 2 1 3	ONE MORE STEP
+// 2. si el mayor es el segundo nodo, mandalo al final
+	// 1 3 2 >> 2 1 3	ONE MORE STEP
+	// 2 3 1 >> 1 2 3	DONE
+// 3. el mayor esta al final si o si;
+// 	si el primero es mayor que el segundo, swap()
+	// 2 1 3 >> 1 2 3	DONE
 void	sort_three(t_node **a)
 {
 	t_node	*highest;
@@ -29,9 +42,10 @@ void	sort_three(t_node **a)
 		rev_rotate_a(a);
 	if ((*a)->value > (*a)->next->value)
 		swap_a(*a);
+	return ;
 }
 
-void	select_algorithm(t_node **a, int size)
+void	short_sort(t_node **a, int size)
 {
 	if (size == 1)
 		return ;
@@ -40,7 +54,7 @@ void	select_algorithm(t_node **a, int size)
 	if (size == 3)
 		sort_three(a);
 	// if (size == 4)
-	// 	sort_four(a);
+	// 	sort_four();
 	// if (size == 5)
-	// 	sort_five(a);
+	// 	sort_five();
 }

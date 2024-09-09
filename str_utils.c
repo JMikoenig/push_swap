@@ -6,7 +6,7 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 18:42:27 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/09/08 15:47:39 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/09/09 13:59:04 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ static size_t	ft_strlen(const char *str)
 static int	populate_strings(char *str, const int len,
 	int numparts, char ***output)
 {
-	char	**currentpart;
+	char	**current_part;
 	int		i;
 
-	currentpart = *output;
-	*currentpart = str;
+	current_part = *output;
+	*current_part = str;
 	i = 0;
 	while (i < len)
 	{
@@ -40,8 +40,8 @@ static int	populate_strings(char *str, const int len,
 				i++;
 				numparts--;
 			}
-			currentpart++;
-			*currentpart = &(str[i + 1]);
+			current_part++;
+			*current_part = &(str[i + 1]);
 		}
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 10:52:54 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/09/08 15:40:46 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/09/09 13:56:26 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ int	parse_input_array(int argc, char **argv, int **output_int_arr)
 		size = argc - 1;
 	}
 	*output_int_arr = arr_atoi(tokens, size);
+	free(tokens);
 	return (size);
 }

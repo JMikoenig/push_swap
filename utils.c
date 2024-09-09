@@ -6,7 +6,7 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 18:38:24 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/09/08 15:46:57 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/09/09 13:59:19 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,11 @@ int	*arr_atoi(char **tokens, int size)
 
 	i = 0;
 	nums = malloc(size * sizeof(int));
+	if (!nums)
+	{
+		free(nums);
+		return (0);
+	}
 	while (i < size)
 	{
 		if (!ft_strncmp(tokens[i], "0", 1))
@@ -102,4 +107,5 @@ void	ft_print(const char *str)
 		str++;
 	}
 	write(1, "\n", 1);
+	return ;
 }

@@ -6,7 +6,7 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 18:38:58 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/09/08 16:49:09 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/09/09 13:28:01 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ static void	move_on_top(t_node *node, t_node **stack_a, t_node **stack_b)
 	}
 }
 
-void	sort(const int *input_arr, int size)
+void	sort(int *input_arr, int size)
 {
 	t_node	*stack_a;
 	t_node	*stack_b;
@@ -115,7 +115,7 @@ void	sort(const int *input_arr, int size)
 	size_b = 0;
 	while (size_a > 3)
 		push_b(&stack_a, &size_a, &stack_b, &size_b);
-	sort_three(&stack_a); // sort_specific_size(int size) >> este parametro redirecciona a la funcion apropiada
+	short_sort(&stack_a, size);
 	while (size_b > 0)
 	{
 		set_nodes(stack_a, size_a, stack_b, size_b);
@@ -124,5 +124,5 @@ void	sort(const int *input_arr, int size)
 		push_a(&stack_a, &size_a, &stack_b, &size_b);
 	}
 	final_rotation(&stack_a, size_a);
-	free_stacks(stack_a, stack_b);
+	free_stack(stack_a);
 }

@@ -6,13 +6,13 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 18:42:14 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/09/08 15:40:27 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/09/09 13:58:37 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	initialize(t_node **head, const int *arr, const int size)
+int	initialize(t_node **head, int *arr, const int size)
 {
 	int		i;
 	t_node	*current;
@@ -31,5 +31,6 @@ int	initialize(t_node **head, const int *arr, const int size)
 	}
 	current->next = *head;
 	(*head)->prev = current;
+	free(arr);
 	return (0);
 }

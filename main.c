@@ -6,7 +6,7 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 18:44:55 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/09/08 15:43:38 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/09/09 13:26:00 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,7 @@ int	main(int argc, char **argv)
 		return (-1);
 	size = parse_input_array(argc, argv, &input_array);
 	if (has_duplicates(input_array, size))
-	{
 		return (2);
-	}
 	sort(input_array, size);
 	return (0);
 }
