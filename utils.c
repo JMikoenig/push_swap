@@ -6,7 +6,7 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 18:38:24 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/09/09 22:37:36 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/09/09 23:06:44 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,10 @@ int	*arr_atoi(char **tokens, int size)
 			nums[i] = 0;
 		else
 			if (ft_atoi(tokens[i]) == 0)
+			{
+				free(nums);
 				exit(1);
+			}
 		nums[i] = ft_atoi(tokens[i]);
 		i++;
 	}
