@@ -5,28 +5,26 @@
 ./push_swap
 
 ## Identity test
-!!! ./push_swap 42
-!!! ./push_swap 2 3
-!!! ./push_swap 0 1 2 3
-!!! ./push_swap 0 1 2 3 4 5 6 7 8 9
-!!! ARG=$(seq 3 7 | tr '\n' ' '); ./push_swap $ARG
+./push_swap 42
+./push_swap 2 3
+./push_swap 0 1 2 3
+./push_swap 0 1 2 3 4 5 6 7 8 9
+ARG=$(seq 3 7 | tr '\n' ' '); ./push_swap $ARG
 
 ## Simple version // hay leaks con la string pero no sin comillas
+ARG="2 1 0"; ./push_swap $ARG | ./checker_linux $ARG
 !!! ARG="2 1 0"; ./push_swap $ARG | ./checker_linux $ARG
-!!! ARG="23 151 0"; ./push_swap $ARG | ./checker_linux $ARG
+
+## Another simple version
+ARG="1 5 2 4 3"; ./push_swap $ARG | ./checker_linux $ARG
+INT=$(seq 1 5 | sort -R | tr '\n' ' '); ARG="$INT"; ./push_swap $ARG | ./checker_linux $ARG
+
+## Middle version
+ARG=$(seq 1 100 | sort -R | tr '\n' ' '); ./push_swap $ARG | ./checker_linux $ARG
+INT=$(seq 1 100 | sort -R | tr '\n' ' '); ARG="$INT"; ./push_swap $ARG | ./checker_linux $ARG
+
+## Advanced version
+ARG=$(seq 1 500 | sort -R | tr '\n' ' '); ./push_swap $ARG | ./checker_linux $ARG
+INT=$(seq 1 500 | sort -R | tr '\n' ' '); ARG="$INT"; ./push_swap $ARG | ./checker_linux $ARG
 
 
-
-
-
-
-
-
-## LEAKS
-
-ARG=$(seq 1 9 | sort -R | tr '\n' ' '); valgrind --leak-check=full ./push_swap $ARG
->> Command: ./push_swap 7\ 3\ 4\ 9\ 2\ 5\ 1\ 6\ 8\
->> definitely lost: 80 bytes in 1 blocks
->> ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
-
-	si meto ese array a mano, no detecta fugas

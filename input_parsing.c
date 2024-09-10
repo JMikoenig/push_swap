@@ -6,7 +6,7 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 10:52:54 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/09/09 22:35:18 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/09/10 15:31:30 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,11 @@ int	parse_input_array(int argc, char **argv, int **output_int_arr)
 		size = argc - 1;
 	}
 	*output_int_arr = arr_atoi(tokens, size);
+	if (tokens != argv + 1) //////////////////// 15:00
+	{
+		// printf("parse_input_array > free(tokens)"); //////////////////// 15:05
+		free(tokens); //////////////////// 14:13
+	}
+	// printf("parse_input_array: %p\n", tokens); ////////////////////
 	return (size);
 }

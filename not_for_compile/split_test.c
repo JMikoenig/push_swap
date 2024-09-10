@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <string.h>
 
-int str_separate(char *srcstr, char sep, char ***output)
+// int str_separate(char *srcstr, char sep, char ***output)
 {
 	/* Assume we have a properly NULL-terminated string. */
 	int len = strlen(srcstr);

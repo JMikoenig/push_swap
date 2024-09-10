@@ -24,7 +24,7 @@ FLAGS = -Wall -Wextra -Werror
 all:	$(NAME)
 
 $(NAME):	$(OBJS)
-	cc $(FLAGS) -g -o $(NAME) $(OBJS)
+	cc $(FLAGS) -ggdb3 -o $(NAME) $(OBJS)
 
 $(OBJS):	$(SRCS)
 	cc -c $(FLAGS) $(SRCS)

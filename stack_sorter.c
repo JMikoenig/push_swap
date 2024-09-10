@@ -6,7 +6,7 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 18:38:58 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/09/09 22:52:46 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/09/10 13:48:49 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,10 @@ void	sort(int *input_arr, int size)
 	stack_a = NULL;
 	stack_b = NULL;
 	if (is_sorted(input_arr, size))
+	{
+		free(input_arr); //////////////////// 13:46
 		return ;
+	}
 	initialize(&stack_a, input_arr, size);
 	size_a = size;
 	size_b = 0;

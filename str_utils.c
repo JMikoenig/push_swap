@@ -6,7 +6,7 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 18:42:27 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/09/09 22:45:58 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/09/10 14:55:12 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ static char	**initialize_str_array(int size)
 	char	**output;
 
 	output = malloc(size * sizeof(char *));
+	// printf("initialize_str_array: %p\n", output); ////////////////////
 	if (!output)
 	{
 		free(output);

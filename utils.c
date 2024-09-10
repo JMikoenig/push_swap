@@ -6,7 +6,7 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 18:38:24 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/09/09 23:06:44 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/09/10 14:13:13 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ int	*arr_atoi(char **tokens, int size)
 		nums[i] = ft_atoi(tokens[i]);
 		i++;
 	}
+	// free(tokens); //////////////////// 13:44
 	return (nums);
 }
 
