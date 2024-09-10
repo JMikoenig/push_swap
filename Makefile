@@ -9,6 +9,7 @@ SRCS =	checks.c				\
 		push.c					\
 		rotate.c				\
 		rev_rotate.c			\
+		sort_long.c				\
 		sort_short.c			\
 		stack_sorter.c			\
 		str_utils.c				\

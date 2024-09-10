@@ -6,7 +6,7 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 18:44:00 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/09/10 14:52:25 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/09/10 16:04:57 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,10 @@ int		has_duplicates(const int *int_arr, const int size);
 int		is_sorted(const int *arr, const int size);
 
 // stack_sorter.c
-void	sort(int *input_arr, int size);
+void	push_swap(int *input_arr, int size);
+
+// long_sort.c
+void	sort(t_node *stack_a, int size_a, t_node *stack_b, int size_b);
 
 // node_management.c
 t_node	*create_node(int value);
