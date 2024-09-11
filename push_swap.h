@@ -6,7 +6,7 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 18:44:00 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/09/10 16:04:57 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/09/11 12:03:51 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ void	free_stack(t_node *head);
 // sort_short.c
 void	sort_three(t_node **a);
 void	short_sort(t_node **a, int size);
-
 
 // === OPERATIONS ===
 

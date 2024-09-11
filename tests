@@ -10,10 +10,10 @@
 ./push_swap 0 1 2 3
 ./push_swap 0 1 2 3 4 5 6 7 8 9
 ARG=$(seq 3 7 | tr '\n' ' '); ./push_swap $ARG
+INT=$(seq 3 7 | tr '\n' ' '); ARG="$INT"; ./push_swap $ARG
 
-## Simple version // hay leaks con la string pero no sin comillas
+## Simple version
 ARG="2 1 0"; ./push_swap $ARG | ./checker_linux $ARG
-!!! ARG="2 1 0"; ./push_swap $ARG | ./checker_linux $ARG
 
 ## Another simple version
 ARG="1 5 2 4 3"; ./push_swap $ARG | ./checker_linux $ARG

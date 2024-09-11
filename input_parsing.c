@@ -6,7 +6,7 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 10:52:54 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/09/10 15:47:23 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/09/11 13:25:01 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,27 @@
 
 int	parse_input_array(int argc, char **argv, int **output_int_arr)
 {
+	int		i;
 	int		size;
 	char	**tokens;
 
+	i = -1;
 	tokens = NULL;
 	if (argc == 2)
 		size = str_separate(argv[1], ' ', &tokens);
 	else
 	{
-		tokens = argv + 1;
 		size = argc - 1;
+		tokens = malloc(size * sizeof(char *));
+		if (!tokens)
+		{
+			free(tokens);
+			return (0);
+		}
+		while (++i < size)
+			tokens[i] = argv[i + 1];
 	}
 	*output_int_arr = arr_atoi(tokens, size);
-	if (tokens != argv + 1)
-		free(tokens);
+	free(tokens);
 	return (size);
 }
