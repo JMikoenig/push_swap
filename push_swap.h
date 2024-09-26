@@ -6,15 +6,17 @@
 /*   By: jamanzan <jamanzan@student.42prague.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 18:44:00 by jamanzan          #+#    #+#             */
-/*   Updated: 2024/09/11 12:03:51 by jamanzan         ###   ########.fr       */
+/*   Updated: 2024/09/26 12:49:49 by jamanzan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <limits.h>
-#include <stddef.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdio.h>
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
+
+# include <limits.h>
+# include <stddef.h>
+# include <stdlib.h>
+# include <unistd.h>
 
 typedef struct s_node
 {
@@ -82,3 +84,5 @@ void	double_rev_rotate(t_node **head_a, t_node **head_b);
 void	swap_a(t_node *current);
 void	swap_b(t_node *current);
 void	double_swap(t_node *a, t_node *b);
+
+#endif
