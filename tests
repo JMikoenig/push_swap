@@ -1,14 +1,14 @@
-## Error management
+## Error management >> expected output "Error" for all cases except the last one (outputs nothing)
 ./push_swap nine four two
 ./push_swap "nine four two"
 ./push_swap 5 1 4 2 4
 ./push_swap "5 1 4 2 4"
 ./push_swap "5 1 32147483647 2 3"
-./push_swap
 ./push_swap 25 23r 4t6
 ./push_swap "25 23r 4t6"
 ./push_swap 42 one 24
 ./push_swap "42 one 24"
+./push_swap
 
 ## Error management VALGRIND
 vg ./push_swap nine four two
@@ -16,14 +16,15 @@ vg ./push_swap "nine four two"
 vg ./push_swap 5 1 4 2 4
 vg ./push_swap "5 1 4 2 4"
 vg ./push_swap "5 1 32147483647 2 3"
-vg ./push_swap
 vg ./push_swap 25 23r 4t6
 vg ./push_swap "25 23r 4t6"
 vg ./push_swap 42 one 24
 vg ./push_swap "42 one 24"
+vg ./push_swap
 
+	=-=-=-=-=-=-=-=-=-=
 
-## Identity test
+## Identity test >> The program should display nothing
 ./push_swap 42
 ./push_swap "42"
 ./push_swap 2 3
@@ -32,7 +33,7 @@ vg ./push_swap "42 one 24"
 ./push_swap "0 1 2 3"
 ./push_swap "0 1 2 3 4 5 6 7 8 9"
 ARG=$(seq 3 7 | tr '\n' ' '); ./push_swap $ARG
-INT=$(seq 3 7 | tr '\n' ' '); ARG="$INT"; ./push_swap $ARG
+ARG=$(seq 3 7 | tr '\n' ' '); eval ./push_swap $ARG
 
 ## Identity test VALGRIND
 vg ./push_swap 42
@@ -43,10 +44,11 @@ vg ./push_swap 0 1 2 3
 vg ./push_swap "0 1 2 3"
 vg ./push_swap "0 1 2 3 4 5 6 7 8 9"
 ARG=$(seq 3 7 | tr '\n' ' '); vg ./push_swap $ARG
-INT=$(seq 3 7 | tr '\n' ' '); ARG="$INT"; vg ./push_swap $ARG
+ARG=$(seq 3 7 | tr '\n' ' '); eval vg ./push_swap $ARG
 
+	=-=-=-=-=-=-=-=-=-=
 
-## Simple version
+## Simple version >> The program should display "OK"
 ARG="2 1 0"; ./push_swap $ARG | ./checker_linux $ARG
 ARG=(2 1 0); ./push_swap $ARG | ./checker_linux $ARG
 
@@ -54,34 +56,37 @@ ARG=(2 1 0); ./push_swap $ARG | ./checker_linux $ARG
 ARG="2 1 0"; vg ./push_swap $ARG
 ARG=(2 1 0); vg ./push_swap $ARG
 
+	=-=-=-=-=-=-=-=-=-=
 
-## Another simple version
+## Another simple version >> The program should display "OK"
 ARG="1 5 2 4 3"; vg ./push_swap $ARG | ./checker_linux $ARG
 ARG="1 5 2 4 3"; eval vg ./push_swap $ARG | eval ./checker_linux $ARG
 ARG=$(seq 1 5 | sort -R | tr '\n' ' '); vg ./push_swap $ARG | ./checker_linux $ARG
 ARG=$(seq 1 5 | sort -R | tr '\n' ' '); eval vg ./push_swap $ARG | ./checker_linux $ARG
 
-## Another simple version WORD COUNT
+## Another simple version WORD COUNT >> The program should display "OK", less than 12 instructions
 ARG="1 5 2 4 3"; COUNT=$(vg ./push_swap $ARG | wc -l); echo "word count: $COUNT"
 ARG="1 5 2 4 3"; COUNT=$(eval vg ./push_swap $ARG | wc -l); echo "word count: $COUNT"
 ARG=$(seq 1 5 | sort -R | tr '\n' ' '); COUNT=$(vg ./push_swap $ARG | wc -l); echo "word count: $COUNT"
 ARG=$(seq 1 5 | sort -R | tr '\n' ' '); COUNT=$(eval vg ./push_swap $ARG | wc -l); echo "word count: $COUNT"
 
+	=-=-=-=-=-=-=-=-=-=
 
-## Middle version
+## Middle version >> The program should display "OK"
 ARG=$(seq 1 100 | sort -R | tr '\n' ' '); vg ./push_swap $ARG | ./checker_linux $ARG
 ARG=$(seq 1 100 | sort -R | tr '\n' ' '); eval vg ./push_swap $ARG | ./checker_linux $ARG
 
-## Middle version WORD COUNT
+## Middle version WORD COUNT >> The program should display "OK", less than 700 instructions
 ARG=$(seq 1 100 | sort -R | tr '\n' ' '); COUNT=$(vg ./push_swap $ARG | wc -l); echo "word count: $COUNT"
 ARG=$(seq 1 100 | sort -R | tr '\n' ' '); COUNT=$(eval vg ./push_swap $ARG | wc -l); echo "word count: $COUNT"
 
+	=-=-=-=-=-=-=-=-=-=
 
-## Advanced version
+## Advanced version >> The program should display "OK"
 ARG=$(seq 1 500 | sort -R | tr '\n' ' '); vg ./push_swap $ARG | ./checker_linux $ARG
 ARG=$(seq 1 500 | sort -R | tr '\n' ' '); eval vg ./push_swap $ARG | ./checker_linux $ARG
 
-## Advanced version WORD COUNT
+## Advanced version WORD COUNT >> The program should display "OK", less than 5500 instructions
 ARG=$(seq 1 500 | sort -R | tr '\n' ' '); COUNT=$(vg ./push_swap $ARG | wc -l); echo "word count: $COUNT"
 ARG=$(seq 1 500 | sort -R | tr '\n' ' '); COUNT=$(eval vg ./push_swap $ARG | wc -l); echo "word count: $COUNT"
 
